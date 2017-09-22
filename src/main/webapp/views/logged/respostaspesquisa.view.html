@@ -1,0 +1,140 @@
+<h3>RespostasPesquisa</h3>
+<div data-component="crn-datasource" id="crn-datasource-763276" class="component-holder">
+  <datasource filter="" name="RespostasPesquisa" entity="api/rest/cronapp/app/RespostasPesquisa" keys="id" rows-per-page="100" delete-message="Deseja remover?" class=""></datasource>
+</div>
+<div data-component="crn-button" id="crn-button-564202">
+  <button class="btn btn-primary" type="submit" onclick="" ng-click="RespostasPesquisa.startInserting()" ng-hide="RespostasPesquisa.inserting || RespostasPesquisa.editing"><i class="fa fa-user"></i> <span class="">{{"template.crud.new" | translate}}</span></button>
+</div>
+<div class="component-holder" data-component="crn-grid" id="crn-grid-RespostasPesquisa">
+  <div crn-datasource="RespostasPesquisa" class="" ng-hide="RespostasPesquisa.editing || RespostasPesquisa.inserting">
+    <table class="table  table-bordered table-hover table-striped">
+      <thead>
+        <tr class="table-header">
+          <th class="">
+            <div class="">Funcionarios</div>
+          </th>
+          <th class="">
+            <div class="">Questoes</div>
+          </th>
+          <th class="">
+            <div class="">Opcoes</div>
+          </th>
+          <th class="">
+            <div class="">{{"template.crud.actions" | translate}}</div>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="table-content" ng-repeat="rowData in datasource.data">
+          <td class="">
+            <div class="">
+              {{rowData.funcionarios.nome}}
+            </div>
+          </td>
+          <td class="">
+            <div class="">
+              {{rowData.questoes.perguntas}}
+            </div>
+          </td>
+          <td class="">
+            <div class="">
+              {{rowData.opcoes.opcao}}
+            </div>
+          </td>
+          <td class="">
+            <div class="">
+              <button class="btn btn-default btn-sm" type="submit" ng-click="datasource.startEditing(rowData)"><i class="fa fa-edit"></i></button>
+              <button class="btn btn-default btn-sm" type="submit" ng-click="datasource.remove(rowData)"><i class="fa fa-times"></i></button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="table-footer-controls">
+      <button class="btn btn-default btn-block btn-clicked" ng-show="datasource.hasNextPage()" ng-click="datasource.nextPage()">{{"template.crud.load_more" | translate}}...</button>
+    </div>
+  </div>
+</div>
+<div data-component="crn-form" id="crn-form-form-RespostasPesquisa">
+  <div class="form" ng-show="RespostasPesquisa.editing || RespostasPesquisa.inserting">
+    <form crn-datasource="RespostasPesquisa" class="">
+      <div class="tool-bar" ng-hide="datasource.editing || datasource.inserting">
+        <button class="btn btn-primary" ng-click="datasource.startInserting()"><i class="glyphicon glyphicon-plus-sign"></i></button>
+        <button class="btn btn-success" ng-click="datasource.startEditing()"><i class="glyphicon glyphicon-edit"></i></button>
+        <button class="btn btn-primary" ng-disabled="!datasource.hasPrevious()" ng-click="datasource.previous()"><i class="glyphicon glyphicon-chevron-left"></i></button>
+        <button class="btn btn-primary" ng-disabled="!datasource.hasNext()" ng-click="datasource.next()"><i class="glyphicon glyphicon-chevron-right"></i></button>
+        <button class="btn btn-primary" ng-click="datasource.remove()"><i class="glyphicon glyphicon-trash"></i></button>
+      </div>
+      <div class="active-bar" ng-hide="!datasource.editing &amp;&amp; !datasource.inserting">
+        <button class="btn btn-success" ng-click="datasource.post()"><i class="glyphicon glyphicon-ok"></i></button>
+        <button class="btn btn-danger" ng-click="datasource.cancel()"><i class="glyphicon glyphicon-remove"></i></button>
+      </div>
+      <br/>
+      <fieldset ng-disabled="!datasource.editing &amp;&amp; !datasource.inserting">
+        <div data-component="crn-datasource" class="component-holder">
+          <datasource name="funcionarios" entity="api/rest/cronapp/app/Profissionais" keys="id" class="" dependent-by="{{RespostasPesquisa}}"></datasource>
+        </div>
+        <div data-component="crn-combobox" id="crn-combobox-funcionarios">
+          <div class="form-group">
+            <label for="combobox-funcionarios" class="">Funcionarios</label>
+            <ui-select ng-model="RespostasPesquisa.active.funcionarios" crn-datasource="funcionarios" class="crn-select" id="combobox-funcionarios" >
+              <ui-select-match class="">
+                {{$select.selected.nome}}
+              </ui-select-match>
+              <ui-select-choices  repeat="rowData in datasource.data | filter : $select.search" class="">
+                <div class="" data-container="true">
+                  {{rowData.nome}}
+                </div>
+              </ui-select-choices>
+            </ui-select>
+          </div>
+        </div>
+        <div data-component="crn-datasource" class="component-holder">
+          <datasource name="questoes" entity="api/rest/cronapp/app/Questoes" keys="id" class="" dependent-by="{{RespostasPesquisa}}"></datasource>
+        </div>
+        <div data-component="crn-combobox" id="crn-combobox-questoes">
+          <div class="form-group">
+            <label for="combobox-questoes" class="">Questoes</label>
+            <ui-select ng-model="RespostasPesquisa.active.questoes" crn-datasource="questoes" class="crn-select" id="combobox-questoes" >
+              <ui-select-match class="">
+                {{$select.selected.perguntas}}
+              </ui-select-match>
+              <ui-select-choices  repeat="rowData in datasource.data | filter : $select.search" class="">
+                <div class="" data-container="true">
+                  {{rowData.perguntas}}
+                </div>
+              </ui-select-choices>
+            </ui-select>
+          </div>
+        </div>
+        <div data-component="crn-datasource" class="component-holder">
+          <datasource name="opcoes" entity="api/rest/cronapp/app/Opcoes" keys="id" class="" dependent-by="{{RespostasPesquisa}}"></datasource>
+        </div>
+        <div data-component="crn-combobox" id="crn-combobox-opcoes">
+          <div class="form-group">
+            <label for="combobox-opcoes" class="">Opcoes</label>
+            <ui-select ng-model="RespostasPesquisa.active.opcoes" crn-datasource="opcoes" class="crn-select" id="combobox-opcoes" >
+              <ui-select-match class="">
+                {{$select.selected.opcao}}
+              </ui-select-match>
+              <ui-select-choices  repeat="rowData in datasource.data | filter : $select.search" class="">
+                <div class="" data-container="true">
+                  {{rowData.opcao}}
+                </div>
+              </ui-select-choices>
+            </ui-select>
+          </div>
+        </div>
+        <!-- NtoN  -->
+        <!-- NtoN  end-->
+      </fieldset>
+    </form>
+    <form>
+        <fieldset>
+            <!-- OneToN -->
+        <!-- OneToOne  end -->
+
+        </fieldset>
+    </form>
+  </div>
+</div>

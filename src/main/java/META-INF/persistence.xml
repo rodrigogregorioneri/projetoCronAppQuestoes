@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+    <persistence-unit name="app" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <jta-data-source>java:comp/env/jdbc/main</jta-data-source>
+        <class>app.entity.UserRole</class>
+        <class>app.entity.User</class>
+        <class>app.entity.Role</class>
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://rds-oncronos-shared.cx8gelec2ybx.us-east-1.rds.amazonaws.com:3306/f22434ef-6ad9-4c2e-8ce3-b0ad6ba2daf4"/>
+            <property name="javax.persistence.jdbc.user" value="s22434rs6nq94p2r"/>
+            <property name="javax.persistence.jdbc.password" value="r8pr3o0nq6on2qns"/>
+            <property name="eclipselink.ddl-generation" value="create-or-extend-tables"/>
+        </properties>
+    </persistence-unit>
+    <persistence-unit name="cronapp.app" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <jta-data-source>java:comp/env/jdbc/main</jta-data-source>
+        <class>cronapp.app.entity.Territorio</class>
+        <class>cronapp.app.entity.Profissionais</class>
+        <class>cronapp.app.entity.Cidades</class>
+        <class>cronapp.app.entity.Cargo</class>
+        <class>cronapp.app.entity.OpcaoPerguntas</class>
+        <class>cronapp.app.entity.Estados</class>
+        <class>cronapp.app.entity.Pesquisa</class>
+        <class>cronapp.app.entity.Empresa</class>
+        <class>cronapp.app.entity.Ramo</class>
+        <class>cronapp.app.entity.Respostas</class>
+        <class>cronapp.app.entity.Tecnologias</class>
+        <class>cronapp.app.entity.Pergunta</class>
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://rds-oncronos-shared.cx8gelec2ybx.us-east-1.rds.amazonaws.com:3306/f22434ef-6ad9-4c2e-8ce3-b0ad6ba2daf4"/>
+            <property name="javax.persistence.jdbc.user" value="s22434rs6nq94p2r"/>
+            <property name="javax.persistence.jdbc.password" value="r8pr3o0nq6on2qns"/>
+            <property name="eclipselink.ddl-generation" value="create-or-extend-tables"/>
+        </properties>
+    </persistence-unit>
+</persistence>

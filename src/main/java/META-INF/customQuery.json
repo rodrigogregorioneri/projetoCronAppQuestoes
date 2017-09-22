@@ -1,0 +1,46 @@
+{
+	"skkj2amu2ywo": {
+		"customId": "skkj2amu2ywo",
+		"queryName": "Pesquisa",
+		"screen": "src/main/webapp/views/logged/formularioPesquisa.view.html",
+		"sourceType": "entityFullName",
+		"blockly": null,
+		"entitySimpleName": "Pesquisa",
+		"entityFullName": "cronapp.app.entity.Pesquisa",
+		"query": "select o from Pesquisa o",
+		"queryParamsValues": [],
+		"verbs": {
+			"GET": true,
+			"GETAuthorities": null,
+			"POST": true,
+			"POSTAuthorities": null,
+			"PUT": true,
+			"PUTAuthorities": null,
+			"DELETE": true,
+			"DELETEAuthorities": null
+		},
+		"events": {
+			"beforeInsert": null,
+			"beforeUpdate": null,
+			"beforeDelete": null,
+			"afterInsert": null,
+			"afterUpdate": null,
+			"afterDelete": null,
+			"onNavigate": null,
+			"onGetData": null
+		},
+		"defaultValues": {
+			"id": null,
+			"nome_pesquisa": null
+		},
+		"security": {
+			"id": null,
+			"nome_pesquisa": null
+		},
+		"errorHandles": {
+			"primaryKey": null,
+			"foreignKey": null
+		},
+		"serviceUrl": "api/cronapi/query/skkj2amu2ywo/"
+	}
+}
