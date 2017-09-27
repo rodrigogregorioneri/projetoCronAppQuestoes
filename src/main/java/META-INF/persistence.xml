@@ -21,13 +21,16 @@
         <class>cronapp.app.entity.Profissionais</class>
         <class>cronapp.app.entity.Cidades</class>
         <class>cronapp.app.entity.Cargo</class>
-        <class>cronapp.app.entity.OpcaoPerguntas</class>
+        <class>cronapp.app.entity.PerguntaRespostas</class>
         <class>cronapp.app.entity.Estados</class>
+        <class>cronapp.app.entity.Respostas</class>
+        <class>cronapp.app.entity.Componente</class>
+        <class>cronapp.app.entity.Tecnologias</class>
+        <class>cronapp.app.entity.RespostasOpcaoPerguntas</class>
+        <class>cronapp.app.entity.OpcaoPerguntas</class>
         <class>cronapp.app.entity.Pesquisa</class>
         <class>cronapp.app.entity.Empresa</class>
         <class>cronapp.app.entity.Ramo</class>
-        <class>cronapp.app.entity.Respostas</class>
-        <class>cronapp.app.entity.Tecnologias</class>
         <class>cronapp.app.entity.Pergunta</class>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>

@@ -9,18 +9,19 @@
         "qtdFuncionarios:java.lang.Integer",
         "cnpj:java.lang.Integer",
         "segmento:java.lang.String",
-        "ramo:Ramo"
+        "ramo:Ramo",
+        "pesquisa:Pesquisa"
       ],
       "methods": [
         "+ list(): List<Empresa>"
       ],
       "position": {
         "x": 1195,
-        "y": 303
+        "y": 302
       },
       "size": {
-        "width": 213.921875,
-        "height": 164.3125
+        "width": 213.421875,
+        "height": 174.1134262084961
       },
       "angle": 0,
       "multitenantContextJsonIgnore": "false",
@@ -169,6 +170,29 @@
           "isEncryption": false,
           "referencedColumnName": "",
           "isSearchable": false
+        },
+        {
+          "name": "pesquisa",
+          "type": "Pesquisa",
+          "dbName": "fk_pesquisa",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
         }
       ],
       "queries": [
@@ -193,12 +217,12 @@
           "transform": "translate(0,0)"
         },
         ".uml-class-attrs-rect": {
-          "height": 150,
+          "height": 170,
           "transform": "translate(0,50)"
         },
         ".uml-class-methods-rect": {
           "height": 50,
-          "transform": "translate(0,200)"
+          "transform": "translate(0,220)"
         },
         ".uml-class-name-text": {
           "fill": "#000",
@@ -208,12 +232,12 @@
         },
         ".uml-class-attrs-text": {
           "font-size": 11,
-          "text": "id\nrazao\nqtdFuncionarios\ncnpj\nsegmento\nramo\n"
+          "text": "id\nrazao\nqtdFuncionarios\ncnpj\nsegmento\nramo\npesquisa\n"
         },
         ".uml-class-attrs-value": {
-          "ref-x": 113.015625,
+          "ref-x": 112.765625,
           "font-size": 11,
-          "text": "java.lang.String\njava.lang.String\njava.lang.Integer\njava.lang.Integer\njava.lang.String\nRamo\n"
+          "text": "java.lang.String\njava.lang.String\njava.lang.Integer\njava.lang.Integer\njava.lang.String\nRamo\nPesquisa\n"
         },
         ".uml-class-methods-text": {
           "fill": "#0066FF",
@@ -391,7 +415,6 @@
         "celular:java.lang.String",
         "cargo:Cargo",
         "empresa:Empresa",
-        "respostas:Respostas",
         "nome:java.lang.String"
       ],
       "methods": [
@@ -403,7 +426,7 @@
       },
       "size": {
         "width": 198.015625,
-        "height": 283.7194061279297
+        "height": 272.74305725097656
       },
       "angle": 0,
       "multitenantContextJsonIgnore": "false",
@@ -761,29 +784,6 @@
           "isSearchable": false
         },
         {
-          "name": "respostas",
-          "type": "Respostas",
-          "dbName": "fk_respostas",
-          "dbLength": "",
-          "dbPrecision": "",
-          "dbScale": "",
-          "dbDefaultValue": "",
-          "label": "",
-          "mask": "",
-          "isPrimaryKey": false,
-          "isUniqueKey": false,
-          "isNullable": true,
-          "pkType": "",
-          "multitenantContext": "",
-          "jsonIgnore": false,
-          "isTransient": false,
-          "isInsertable": true,
-          "isUpdatable": true,
-          "isEncryption": false,
-          "referencedColumnName": "",
-          "isSearchable": false
-        },
-        {
           "name": "nome",
           "type": "java.lang.String",
           "dbName": "nome",
@@ -829,12 +829,12 @@
           "transform": "translate(0,0)"
         },
         ".uml-class-attrs-rect": {
-          "height": 370,
+          "height": 350,
           "transform": "translate(0,50)"
         },
         ".uml-class-methods-rect": {
           "height": 50,
-          "transform": "translate(0,420)"
+          "transform": "translate(0,400)"
         },
         ".uml-class-name-text": {
           "fill": "#000",
@@ -844,12 +844,12 @@
         },
         ".uml-class-attrs-text": {
           "font-size": 11,
-          "text": "id\nSobrenome\nidade\nescolaridade\nclassificacao\ncurso\nskype\nwhatsapp\nfacebook\ninstagram\nlinkedin\ntelefone\ncelular\ncargo\nempresa\nrespostas\nnome\n"
+          "text": "id\nSobrenome\nidade\nescolaridade\nclassificacao\ncurso\nskype\nwhatsapp\nfacebook\ninstagram\nlinkedin\ntelefone\ncelular\ncargo\nempresa\nnome\n"
         },
         ".uml-class-attrs-value": {
           "ref-x": 97.359375,
           "font-size": 11,
-          "text": "java.lang.String\njava.lang.String\njava.lang.Integer\njava.lang.String\njava.lang.String\njava.lang.String\njava.lang.String\njava.lang.String\njava.lang.String\njava.lang.String\njava.lang.String\njava.lang.String\njava.lang.String\nCargo\nEmpresa\nRespostas\njava.lang.String\n"
+          "text": "java.lang.String\njava.lang.String\njava.lang.Integer\njava.lang.String\njava.lang.String\njava.lang.String\njava.lang.String\njava.lang.String\njava.lang.String\njava.lang.String\njava.lang.String\njava.lang.String\njava.lang.String\nCargo\nEmpresa\njava.lang.String\n"
         },
         ".uml-class-methods-text": {
           "fill": "#0066FF",
@@ -870,12 +870,12 @@
         "+ list(): List<Tecnologias>"
       ],
       "position": {
-        "x": 1796,
-        "y": 257
+        "x": 2258,
+        "y": 485
       },
       "size": {
-        "width": 212.59375,
-        "height": 130.50328826904297
+        "width": 213.359375,
+        "height": 131.62828826904297
       },
       "angle": 0,
       "multitenantContextJsonIgnore": "false",
@@ -997,7 +997,7 @@
           "text": "id\nfuncionarios\nnome_tecnologia\n"
         },
         ".uml-class-attrs-value": {
-          "ref-x": 118.78125,
+          "ref-x": 119.15625,
           "font-size": 11,
           "text": "java.lang.String\nProfissionais\njava.lang.String\n"
         },
@@ -1061,12 +1061,12 @@
         "+ list(): List<Cargo>"
       ],
       "position": {
-        "x": 1829,
-        "y": 618
+        "x": 1874,
+        "y": 653
       },
       "size": {
-        "width": 176.03125,
-        "height": 120.78308868408203
+        "width": 175.515625,
+        "height": 119.65808868408203
       },
       "angle": 0,
       "multitenantContextJsonIgnore": "false",
@@ -1165,7 +1165,7 @@
           "text": "id\nocupacao\n"
         },
         ".uml-class-attrs-value": {
-          "ref-x": 81.828125,
+          "ref-x": 81.703125,
           "font-size": 11,
           "text": "java.lang.String\njava.lang.String\n"
         },
@@ -1363,12 +1363,12 @@
         "+ list(): List<Cidades>"
       ],
       "position": {
-        "x": 914,
-        "y": 590
+        "x": 927,
+        "y": 591
       },
       "size": {
-        "width": 190.703125,
-        "height": 142.5029754638672
+        "width": 190.171875,
+        "height": 141.3779754638672
       },
       "angle": 0,
       "multitenantContextJsonIgnore": "false",
@@ -1513,7 +1513,7 @@
           "text": "id\nempresa\nprofissionais\nnomeCidade\n"
         },
         ".uml-class-attrs-value": {
-          "ref-x": 96.5,
+          "ref-x": 96.359375,
           "font-size": 11,
           "text": "java.lang.String\nEmpresa\nProfissionais\njava.lang.String\n"
         },
@@ -1661,12 +1661,12 @@
         "+ list(): List<Pesquisa>"
       ],
       "position": {
-        "x": 2080,
-        "y": 346
+        "x": 1344,
+        "y": 3
       },
       "size": {
-        "width": 206,
-        "height": 120.78308868408203
+        "width": 205.46875,
+        "height": 119.65808868408203
       },
       "angle": 0,
       "multitenantContextJsonIgnore": "false",
@@ -1765,7 +1765,7 @@
           "text": "id\nnome_pesquisa\n"
         },
         ".uml-class-attrs-value": {
-          "ref-x": 111.796875,
+          "ref-x": 111.65625,
           "font-size": 11,
           "text": "java.lang.String\njava.lang.String\n"
         },
@@ -1782,18 +1782,20 @@
       "attributes": [
         "id:java.lang.String",
         "perguntas:java.lang.String",
-        "tipo_questao:java.lang.String"
+        "pesquisa:Pesquisa",
+        "componente:Componente",
+        "resposta:java.lang.String"
       ],
       "methods": [
         "+ list(): List<Pergunta>"
       ],
       "position": {
-        "x": 1486,
-        "y": 54
+        "x": 1729.9998779296875,
+        "y": 41
       },
       "size": {
-        "width": 192.578125,
-        "height": 131.62828826904297
+        "width": 188.75,
+        "height": 153.43070220947266
       },
       "angle": 0,
       "multitenantContextJsonIgnore": "false",
@@ -1852,14 +1854,60 @@
           "isSearchable": false
         },
         {
-          "name": "tipo_questao",
-          "type": "java.lang.String",
-          "dbName": "tipo_questao",
+          "name": "pesquisa",
+          "type": "Pesquisa",
+          "dbName": "fk_pesquisa",
           "dbLength": "",
           "dbPrecision": "",
           "dbScale": "",
           "dbDefaultValue": "",
-          "label": "Tipo _questao",
+          "label": "",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "componente",
+          "type": "Componente",
+          "dbName": "fk_componente",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "resposta",
+          "type": "java.lang.String",
+          "dbName": "resposta",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "Resposta",
           "mask": "",
           "isPrimaryKey": false,
           "isUniqueKey": false,
@@ -1897,12 +1945,12 @@
           "transform": "translate(0,0)"
         },
         ".uml-class-attrs-rect": {
-          "height": 90,
+          "height": 130,
           "transform": "translate(0,50)"
         },
         ".uml-class-methods-rect": {
           "height": 50,
-          "transform": "translate(0,140)"
+          "transform": "translate(0,180)"
         },
         ".uml-class-name-text": {
           "fill": "#000",
@@ -1912,12 +1960,12 @@
         },
         ".uml-class-attrs-text": {
           "font-size": 11,
-          "text": "id\nperguntas\ntipo_questao\n"
+          "text": "id\nperguntas\npesquisa\ncomponente\nresposta\n"
         },
         ".uml-class-attrs-value": {
-          "ref-x": 98.375,
+          "ref-x": 94.78125,
           "font-size": 11,
-          "text": "java.lang.String\njava.lang.String\njava.lang.String\n"
+          "text": "java.lang.String\njava.lang.String\nPesquisa\nComponente\njava.lang.String\n"
         },
         ".uml-class-methods-text": {
           "fill": "#0066FF",
@@ -1932,19 +1980,18 @@
       "attributes": [
         "id:java.lang.String",
         "opcao:java.lang.String",
-        "pergunta:Pergunta",
-        "pesquisa:Pesquisa"
+        "pergunta:Pergunta"
       ],
       "methods": [
         "+ list(): List<OpcaoPerguntas>"
       ],
       "position": {
-        "x": 1883,
-        "y": 50
+        "x": 2001,
+        "y": 163
       },
       "size": {
-        "width": 200.953125,
-        "height": 142.5029754638672
+        "width": 200.453125,
+        "height": 130.50328826904297
       },
       "angle": 0,
       "multitenantContextJsonIgnore": "false",
@@ -2020,25 +2067,6 @@
           "isEncryption": false,
           "referencedColumnName": "",
           "isSearchable": false
-        },
-        {
-          "name": "pesquisa",
-          "type": "Pesquisa",
-          "dbName": "fk_pesquisa",
-          "label": "",
-          "mask": "",
-          "isPrimaryKey": false,
-          "isUniqueKey": false,
-          "isNullable": true,
-          "multitenantContext": "",
-          "pkType": "",
-          "isIgnore": false,
-          "isTransien": false,
-          "isInsertable": true,
-          "isUpdatable": true,
-          "isEncryption": false,
-          "referencedColumnName": "",
-          "isSearchable": false
         }
       ],
       "queries": [
@@ -2063,12 +2091,12 @@
           "transform": "translate(0,0)"
         },
         ".uml-class-attrs-rect": {
-          "height": 110,
+          "height": 90,
           "transform": "translate(0,50)"
         },
         ".uml-class-methods-rect": {
           "height": 50,
-          "transform": "translate(0,160)"
+          "transform": "translate(0,140)"
         },
         ".uml-class-name-text": {
           "fill": "#000",
@@ -2078,12 +2106,12 @@
         },
         ".uml-class-attrs-text": {
           "font-size": 11,
-          "text": "id\nopcao\npergunta\npesquisa\n"
+          "text": "id\nopcao\npergunta\n"
         },
         ".uml-class-attrs-value": {
-          "ref-x": 106.75,
+          "ref-x": 106.640625,
           "font-size": 11,
-          "text": "java.lang.String\njava.lang.String\nPergunta\nPesquisa\n"
+          "text": "java.lang.String\njava.lang.String\nPergunta\n"
         },
         ".uml-class-methods-text": {
           "fill": "#0066FF",
@@ -2097,20 +2125,19 @@
       "name": "Respostas",
       "attributes": [
         "id:java.lang.String",
-        "pergunta:Pergunta",
-        "opcaoPerguntas:OpcaoPerguntas",
-        "respostaCorreta:java.lang.String"
+        "respostaCorreta:java.lang.String",
+        "profissionais:Profissionais"
       ],
       "methods": [
         "+ list(): List<Respostas>"
       ],
       "position": {
-        "x": 1466,
-        "y": 271
+        "x": 1610,
+        "y": 351
       },
       "size": {
-        "width": 216.40625,
-        "height": 142.5029754638672
+        "width": 206.671875,
+        "height": 130.50328826904297
       },
       "angle": 0,
       "multitenantContextJsonIgnore": "false",
@@ -2146,52 +2173,6 @@
           "isSearchable": false
         },
         {
-          "name": "pergunta",
-          "type": "Pergunta",
-          "dbName": "fk_pergunta",
-          "dbLength": "",
-          "dbPrecision": "",
-          "dbScale": "",
-          "dbDefaultValue": "",
-          "label": "",
-          "mask": "",
-          "isPrimaryKey": false,
-          "isUniqueKey": false,
-          "isNullable": true,
-          "pkType": "",
-          "multitenantContext": "",
-          "jsonIgnore": false,
-          "isTransient": false,
-          "isInsertable": true,
-          "isUpdatable": true,
-          "isEncryption": false,
-          "referencedColumnName": "",
-          "isSearchable": false
-        },
-        {
-          "name": "opcaoPerguntas",
-          "type": "OpcaoPerguntas",
-          "dbName": "fk_opcaoPerguntas",
-          "dbLength": "",
-          "dbPrecision": "",
-          "dbScale": "",
-          "dbDefaultValue": "",
-          "label": "",
-          "mask": "",
-          "isPrimaryKey": false,
-          "isUniqueKey": false,
-          "isNullable": true,
-          "pkType": "",
-          "multitenantContext": "",
-          "jsonIgnore": false,
-          "isTransient": false,
-          "isInsertable": true,
-          "isUpdatable": true,
-          "isEncryption": false,
-          "referencedColumnName": "",
-          "isSearchable": false
-        },
-        {
           "name": "respostaCorreta",
           "type": "java.lang.String",
           "dbName": "respostaCorreta",
@@ -2208,6 +2189,25 @@
           "multitenantContext": "",
           "jsonIgnore": false,
           "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "profissionais",
+          "type": "Profissionais",
+          "dbName": "fk_profissionais",
+          "label": "",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "multitenantContext": "",
+          "pkType": "",
+          "isIgnore": false,
+          "isTransien": false,
           "isInsertable": true,
           "isUpdatable": true,
           "isEncryption": false,
@@ -2237,12 +2237,12 @@
           "transform": "translate(0,0)"
         },
         ".uml-class-attrs-rect": {
-          "height": 110,
+          "height": 90,
           "transform": "translate(0,50)"
         },
         ".uml-class-methods-rect": {
           "height": 50,
-          "transform": "translate(0,160)"
+          "transform": "translate(0,140)"
         },
         ".uml-class-name-text": {
           "fill": "#000",
@@ -2252,12 +2252,12 @@
         },
         ".uml-class-attrs-text": {
           "font-size": 11,
-          "text": "id\npergunta\nopcaoPerguntas\nrespostaCorreta\n"
+          "text": "id\nrespostaCorreta\nprofissionais\n"
         },
         ".uml-class-attrs-value": {
-          "ref-x": 114.859375,
+          "ref-x": 112.859375,
           "font-size": 11,
-          "text": "java.lang.String\nPergunta\nOpcaoPerguntas\njava.lang.String\n"
+          "text": "java.lang.String\njava.lang.String\nProfissionais\n"
         },
         ".uml-class-methods-text": {
           "fill": "#0066FF",
@@ -2546,132 +2546,6 @@
     {
       "type": "uml.Composition",
       "relationFields": [
-        "pergunta:target"
-      ],
-      "name": null,
-      "id": "038951f8-2141-4782-9cb2-22fada9f71f7",
-      "runtimeClass": "cronos.widgets.joint.arrow.OneToMany",
-      "target": {
-        "id": "d87db4ea-2076-478c-9767-401d954c6185"
-      },
-      "source": {
-        "id": "13336d59-1914-40c8-9cba-5377a19ff285"
-      },
-      "labels": [
-        {
-          "position": 0.9,
-          "attrs": {
-            "rect": {
-              "fill": "transparent"
-            },
-            "text": {
-              "text": "*",
-              "font-family": "Arial",
-              "font-size": "12px",
-              "fill": "#cecece"
-            }
-          }
-        }
-      ],
-      "z": 76,
-      "attrs": {
-        ".marker-target": {
-          "d": "",
-          "fill": ""
-        },
-        ".marker-source": {
-          "d": "M 40 10 L 20 20 L 0 10 L 20 0 z",
-          "fill": "#cecece"
-        }
-      }
-    },
-    {
-      "type": "uml.Composition",
-      "relationFields": [
-        "pesquisa:target"
-      ],
-      "name": null,
-      "id": "6bf69028-aeaa-40b0-ba6a-ef796c0eea48",
-      "runtimeClass": "cronos.widgets.joint.arrow.OneToMany",
-      "target": {
-        "id": "b84d3503-712d-4dce-a65d-be07b3e427b5"
-      },
-      "source": {
-        "id": "43d1257c-cd48-4b82-9f4c-18984f84f023"
-      },
-      "labels": [
-        {
-          "position": 0.9,
-          "attrs": {
-            "rect": {
-              "fill": "transparent"
-            },
-            "text": {
-              "text": "*",
-              "font-family": "Arial",
-              "font-size": "12px",
-              "fill": "#cecece"
-            }
-          }
-        }
-      ],
-      "z": 77,
-      "attrs": {
-        ".marker-target": {
-          "d": "",
-          "fill": ""
-        },
-        ".marker-source": {
-          "d": "M 40 10 L 20 20 L 0 10 L 20 0 z",
-          "fill": "#cecece"
-        }
-      }
-    },
-    {
-      "type": "uml.Composition",
-      "relationFields": [
-        "opcaoPerguntas:target"
-      ],
-      "name": null,
-      "id": "53189054-0802-46c5-a820-cb277ed04099",
-      "runtimeClass": "cronos.widgets.joint.arrow.OneToMany",
-      "target": {
-        "id": "d87db4ea-2076-478c-9767-401d954c6185"
-      },
-      "source": {
-        "id": "b84d3503-712d-4dce-a65d-be07b3e427b5"
-      },
-      "labels": [
-        {
-          "position": 0.9,
-          "attrs": {
-            "rect": {
-              "fill": "transparent"
-            },
-            "text": {
-              "text": "*",
-              "font-family": "Arial",
-              "font-size": "12px",
-              "fill": "#cecece"
-            }
-          }
-        }
-      ],
-      "z": 78,
-      "attrs": {
-        ".marker-target": {
-          "d": "",
-          "fill": ""
-        },
-        ".marker-source": {
-          "d": "M 40 10 L 20 20 L 0 10 L 20 0 z",
-          "fill": "#cecece"
-        }
-      }
-    },
-    {
-      "type": "uml.Composition",
-      "relationFields": [
         "cargo:target"
       ],
       "name": null,
@@ -2754,15 +2628,157 @@
       }
     },
     {
+      "type": "uml.Class",
+      "name": "RespostasOpcaoPerguntas",
+      "attributes": [
+        "id:java.lang.String",
+        "respostas:Respostas",
+        "opcaoPerguntas:OpcaoPerguntas"
+      ],
+      "methods": [
+        "+ list(): List<RespostasOpcaoPerguntas>"
+      ],
+      "position": {
+        "x": 1916,
+        "y": 369
+      },
+      "size": {
+        "width": 252.421875,
+        "height": 130.50328826904297
+      },
+      "angle": 0,
+      "multitenantContextJsonIgnore": "false",
+      "multitenantContextIgnoreEntities": "",
+      "role": "AssociationClass",
+      "isRest": "true",
+      "multitenantContext": "",
+      "restSecurity": null,
+      "restPath": "",
+      "id": "ac78114b-74b9-4107-b73c-008a8d262936",
+      "fields": [
+        {
+          "name": "id",
+          "type": "java.lang.String",
+          "dbName": "id",
+          "label": "",
+          "mask": "",
+          "isPrimaryKey": true,
+          "isUniqueKey": false,
+          "isNullable": false,
+          "multitenantContext": "",
+          "pkType": "UUID",
+          "isIgnore": false,
+          "isTransien": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "respostas",
+          "type": "Respostas",
+          "dbName": "fk_respostas",
+          "label": "",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "multitenantContext": "",
+          "pkType": "",
+          "isIgnore": false,
+          "isTransien": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "opcaoPerguntas",
+          "type": "OpcaoPerguntas",
+          "dbName": "fk_opcaoPerguntas",
+          "label": "",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "multitenantContext": "",
+          "pkType": "",
+          "isIgnore": false,
+          "isTransien": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        }
+      ],
+      "queries": [
+        {
+          "isRest": "true",
+          "name": "list",
+          "query": "select ro from $entity ro",
+          "void": false,
+          "type": "select"
+        }
+      ],
+      "tableName": null,
+      "runtimeClass": "cronos.widgets.joint.uml.Class",
+      "z": 83,
+      "attrs": {
+        "rect": {
+          "stroke": "yellow",
+          "stroke-width": 2
+        },
+        ".uml-class-name-rect": {
+          "fill": "#fffec0",
+          "height": 50,
+          "transform": "translate(0,0)"
+        },
+        ".uml-class-attrs-rect": {
+          "fill": "#fffec0",
+          "height": 90,
+          "transform": "translate(0,50)"
+        },
+        ".uml-class-methods-rect": {
+          "fill": "#fffec0",
+          "height": 50,
+          "transform": "translate(0,140)"
+        },
+        ".uml-class-name-text": {
+          "fill": "#000",
+          "font-size": 12,
+          "text": "RespostasOpcaoPerguntas",
+          "font-weight": "bold"
+        },
+        ".uml-class-attrs-text": {
+          "fill": "#000",
+          "font-size": 11,
+          "text": "id\nrespostas\nopcaoPerguntas\n"
+        },
+        ".uml-class-attrs-value": {
+          "ref-x": 151.375,
+          "font-size": 11,
+          "text": "java.lang.String\nRespostas\nOpcaoPerguntas\n"
+        },
+        ".uml-class-methods-text": {
+          "fill": "#0066FF",
+          "font-size": 11,
+          "text": "+ list(): List<RespostasOpcaoPerguntas>"
+        }
+      }
+    },
+    {
       "type": "uml.Composition",
       "relationFields": [
         "respostas:target"
       ],
       "name": null,
-      "id": "0383c9dc-2dcd-4012-afd0-f8a6e7c95aa9",
+      "id": "52f04fd3-3d5d-4c75-86cd-213836c87c7b",
       "runtimeClass": "cronos.widgets.joint.arrow.OneToMany",
       "target": {
-        "id": "70af8497-989b-4bad-b28f-2556fbefb65c"
+        "id": "ac78114b-74b9-4107-b73c-008a8d262936"
       },
       "source": {
         "id": "d87db4ea-2076-478c-9767-401d954c6185"
@@ -2783,7 +2799,569 @@
           }
         }
       ],
-      "z": 82,
+      "z": 84,
+      "attrs": {
+        ".marker-target": {
+          "d": "",
+          "fill": ""
+        },
+        ".marker-source": {
+          "d": "M 40 10 L 20 20 L 0 10 L 20 0 z",
+          "fill": "#cecece"
+        }
+      }
+    },
+    {
+      "type": "uml.Composition",
+      "relationFields": [
+        "opcaoPerguntas:target"
+      ],
+      "name": null,
+      "id": "b9345d1a-e3ae-44eb-b704-19d54a27ab06",
+      "runtimeClass": "cronos.widgets.joint.arrow.OneToMany",
+      "target": {
+        "id": "ac78114b-74b9-4107-b73c-008a8d262936"
+      },
+      "source": {
+        "id": "b84d3503-712d-4dce-a65d-be07b3e427b5"
+      },
+      "labels": [
+        {
+          "position": 0.9,
+          "attrs": {
+            "rect": {
+              "fill": "transparent"
+            },
+            "text": {
+              "text": "*",
+              "font-family": "Arial",
+              "font-size": "12px",
+              "fill": "#cecece"
+            }
+          }
+        }
+      ],
+      "z": 85,
+      "attrs": {
+        ".marker-target": {
+          "d": "",
+          "fill": ""
+        },
+        ".marker-source": {
+          "d": "M 40 10 L 20 20 L 0 10 L 20 0 z",
+          "fill": "#cecece"
+        }
+      }
+    },
+    {
+      "type": "uml.Composition",
+      "relationFields": [
+        "profissionais:target"
+      ],
+      "name": null,
+      "id": "81f38231-6ae9-40db-af04-29e806ee3c96",
+      "runtimeClass": "cronos.widgets.joint.arrow.OneToMany",
+      "target": {
+        "id": "d87db4ea-2076-478c-9767-401d954c6185"
+      },
+      "source": {
+        "id": "70af8497-989b-4bad-b28f-2556fbefb65c"
+      },
+      "labels": [
+        {
+          "position": 0.9,
+          "attrs": {
+            "rect": {
+              "fill": "transparent"
+            },
+            "text": {
+              "text": "*",
+              "font-family": "Arial",
+              "font-size": "12px",
+              "fill": "#cecece"
+            }
+          }
+        }
+      ],
+      "z": 86,
+      "attrs": {
+        ".marker-target": {
+          "d": "",
+          "fill": ""
+        },
+        ".marker-source": {
+          "d": "M 40 10 L 20 20 L 0 10 L 20 0 z",
+          "fill": "#cecece"
+        }
+      }
+    },
+    {
+      "type": "uml.Class",
+      "name": "PerguntaRespostas",
+      "attributes": [
+        "id:java.lang.String",
+        "pergunta:Pergunta",
+        "respostas:Respostas"
+      ],
+      "methods": [
+        "+ list(): List<PerguntaRespostas>"
+      ],
+      "position": {
+        "x": 1439,
+        "y": 169
+      },
+      "size": {
+        "width": 214.515625,
+        "height": 130.50328826904297
+      },
+      "angle": 0,
+      "multitenantContextJsonIgnore": "false",
+      "multitenantContextIgnoreEntities": "",
+      "role": "AssociationClass",
+      "isRest": "true",
+      "multitenantContext": "",
+      "restSecurity": null,
+      "restPath": "",
+      "id": "06dd0995-7f77-4c97-aaea-df908bfd4eaf",
+      "fields": [
+        {
+          "name": "id",
+          "type": "java.lang.String",
+          "dbName": "id",
+          "label": "",
+          "mask": "",
+          "isPrimaryKey": true,
+          "isUniqueKey": false,
+          "isNullable": false,
+          "multitenantContext": "",
+          "pkType": "UUID",
+          "isIgnore": false,
+          "isTransien": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "pergunta",
+          "type": "Pergunta",
+          "dbName": "fk_pergunta",
+          "label": "",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "multitenantContext": "",
+          "pkType": "",
+          "isIgnore": false,
+          "isTransien": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "respostas",
+          "type": "Respostas",
+          "dbName": "fk_respostas",
+          "label": "",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "multitenantContext": "",
+          "pkType": "",
+          "isIgnore": false,
+          "isTransien": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        }
+      ],
+      "queries": [
+        {
+          "isRest": "true",
+          "name": "list",
+          "query": "select pr from $entity pr",
+          "void": false,
+          "type": "select"
+        }
+      ],
+      "tableName": null,
+      "runtimeClass": "cronos.widgets.joint.uml.Class",
+      "z": 88,
+      "attrs": {
+        "rect": {
+          "stroke": "yellow",
+          "stroke-width": 2
+        },
+        ".uml-class-name-rect": {
+          "fill": "#fffec0",
+          "height": 50,
+          "transform": "translate(0,0)"
+        },
+        ".uml-class-attrs-rect": {
+          "fill": "#fffec0",
+          "height": 90,
+          "transform": "translate(0,50)"
+        },
+        ".uml-class-methods-rect": {
+          "fill": "#fffec0",
+          "height": 50,
+          "transform": "translate(0,140)"
+        },
+        ".uml-class-name-text": {
+          "fill": "#000",
+          "font-size": 12,
+          "text": "PerguntaRespostas",
+          "font-weight": "bold"
+        },
+        ".uml-class-attrs-text": {
+          "fill": "#000",
+          "font-size": 11,
+          "text": "id\npergunta\nrespostas\n"
+        },
+        ".uml-class-attrs-value": {
+          "ref-x": 120.703125,
+          "font-size": 11,
+          "text": "java.lang.String\nPergunta\nRespostas\n"
+        },
+        ".uml-class-methods-text": {
+          "fill": "#0066FF",
+          "font-size": 11,
+          "text": "+ list(): List<PerguntaRespostas>"
+        }
+      }
+    },
+    {
+      "type": "uml.Composition",
+      "relationFields": [
+        "pergunta:target"
+      ],
+      "name": null,
+      "id": "fe2b3bc8-ac74-4e8f-94e1-cfb468a0ccd7",
+      "runtimeClass": "cronos.widgets.joint.arrow.OneToMany",
+      "target": {
+        "id": "06dd0995-7f77-4c97-aaea-df908bfd4eaf"
+      },
+      "source": {
+        "id": "13336d59-1914-40c8-9cba-5377a19ff285"
+      },
+      "labels": [
+        {
+          "position": 0.9,
+          "attrs": {
+            "rect": {
+              "fill": "transparent"
+            },
+            "text": {
+              "text": "*",
+              "font-family": "Arial",
+              "font-size": "12px",
+              "fill": "#cecece"
+            }
+          }
+        }
+      ],
+      "z": 89,
+      "attrs": {
+        ".marker-target": {
+          "d": "",
+          "fill": ""
+        },
+        ".marker-source": {
+          "d": "M 40 10 L 20 20 L 0 10 L 20 0 z",
+          "fill": "#cecece"
+        }
+      }
+    },
+    {
+      "type": "uml.Composition",
+      "relationFields": [
+        "respostas:target"
+      ],
+      "name": null,
+      "id": "5818cbd4-f944-4929-803a-dff83472ee57",
+      "runtimeClass": "cronos.widgets.joint.arrow.OneToMany",
+      "target": {
+        "id": "06dd0995-7f77-4c97-aaea-df908bfd4eaf"
+      },
+      "source": {
+        "id": "d87db4ea-2076-478c-9767-401d954c6185"
+      },
+      "labels": [
+        {
+          "position": 0.9,
+          "attrs": {
+            "rect": {
+              "fill": "transparent"
+            },
+            "text": {
+              "text": "*",
+              "font-family": "Arial",
+              "font-size": "12px",
+              "fill": "#cecece"
+            }
+          }
+        }
+      ],
+      "z": 90,
+      "attrs": {
+        ".marker-target": {
+          "d": "",
+          "fill": ""
+        },
+        ".marker-source": {
+          "d": "M 40 10 L 20 20 L 0 10 L 20 0 z",
+          "fill": "#cecece"
+        }
+      }
+    },
+    {
+      "type": "uml.Composition",
+      "relationFields": [
+        "pesquisa:target"
+      ],
+      "name": null,
+      "id": "4d792282-06bf-4d9a-b797-e0db300e2d68",
+      "runtimeClass": "cronos.widgets.joint.arrow.OneToMany",
+      "target": {
+        "id": "13336d59-1914-40c8-9cba-5377a19ff285"
+      },
+      "source": {
+        "id": "43d1257c-cd48-4b82-9f4c-18984f84f023"
+      },
+      "labels": [
+        {
+          "position": 0.9,
+          "attrs": {
+            "rect": {
+              "fill": "transparent"
+            },
+            "text": {
+              "text": "*",
+              "font-family": "Arial",
+              "font-size": "12px",
+              "fill": "#cecece"
+            }
+          }
+        }
+      ],
+      "z": 91,
+      "attrs": {
+        ".marker-target": {
+          "d": "",
+          "fill": ""
+        },
+        ".marker-source": {
+          "d": "M 40 10 L 20 20 L 0 10 L 20 0 z",
+          "fill": "#cecece"
+        }
+      }
+    },
+    {
+      "type": "uml.Composition",
+      "relationFields": [
+        "pesquisa:target"
+      ],
+      "name": null,
+      "id": "674f13e3-8980-4fe7-bae7-67b2ff0ef506",
+      "runtimeClass": "cronos.widgets.joint.arrow.OneToMany",
+      "target": {
+        "id": "d96350db-3eb9-445c-859e-d7e1aa85e5b7"
+      },
+      "source": {
+        "id": "43d1257c-cd48-4b82-9f4c-18984f84f023"
+      },
+      "labels": [
+        {
+          "position": 0.9,
+          "attrs": {
+            "rect": {
+              "fill": "transparent"
+            },
+            "text": {
+              "text": "*",
+              "font-family": "Arial",
+              "font-size": "12px",
+              "fill": "#cecece"
+            }
+          }
+        }
+      ],
+      "z": 92,
+      "attrs": {
+        ".marker-target": {
+          "d": "",
+          "fill": ""
+        },
+        ".marker-source": {
+          "d": "M 40 10 L 20 20 L 0 10 L 20 0 z",
+          "fill": "#cecece"
+        }
+      }
+    },
+    {
+      "type": "uml.Class",
+      "name": "Componente",
+      "attributes": [
+        "id:java.lang.String",
+        "tipo_questao:java.lang.String"
+      ],
+      "methods": [
+        "+ list(): List<Componente>"
+      ],
+      "position": {
+        "x": 2233,
+        "y": 35
+      },
+      "size": {
+        "width": 191.796875,
+        "height": 119.65808868408203
+      },
+      "angle": 0,
+      "multitenantContextJsonIgnore": "false",
+      "multitenantContextIgnoreEntities": "",
+      "role": "Auto",
+      "isRest": "true",
+      "multitenantContext": "",
+      "restSecurity": null,
+      "restPath": "",
+      "id": "1f77f9e6-5fed-4408-8d3a-154565810873",
+      "fields": [
+        {
+          "name": "id",
+          "type": "java.lang.String",
+          "dbName": "id",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "UUID.randomUUID().toString().toUpperCase()",
+          "label": "Id",
+          "mask": "",
+          "isPrimaryKey": true,
+          "isUniqueKey": false,
+          "isNullable": false,
+          "pkType": "UUID",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "tipo_questao",
+          "type": "java.lang.String",
+          "dbName": "tipo_questao",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "Tipo _questao",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        }
+      ],
+      "queries": [
+        {
+          "isRest": "true",
+          "name": "list",
+          "query": "select c from $entity c",
+          "void": false,
+          "type": "select"
+        }
+      ],
+      "tableName": null,
+      "runtimeClass": "cronos.widgets.joint.uml.Class",
+      "z": 93,
+      "attrs": {
+        "rect": {
+          "stroke": "yellow",
+          "stroke-width": 2
+        },
+        ".uml-class-name-rect": {
+          "height": 50,
+          "transform": "translate(0,0)"
+        },
+        ".uml-class-attrs-rect": {
+          "height": 70,
+          "transform": "translate(0,50)"
+        },
+        ".uml-class-methods-rect": {
+          "height": 50,
+          "transform": "translate(0,120)"
+        },
+        ".uml-class-name-text": {
+          "fill": "#000",
+          "font-size": 12,
+          "text": "Componente",
+          "font-weight": "bold"
+        },
+        ".uml-class-attrs-text": {
+          "font-size": 11,
+          "text": "id\ntipo_questao\n"
+        },
+        ".uml-class-attrs-value": {
+          "ref-x": 97.984375,
+          "font-size": 11,
+          "text": "java.lang.String\njava.lang.String\n"
+        },
+        ".uml-class-methods-text": {
+          "fill": "#0066FF",
+          "font-size": 11,
+          "text": "+ list(): List<Componente>"
+        }
+      }
+    },
+    {
+      "type": "uml.Composition",
+      "relationFields": [
+        "componente:target"
+      ],
+      "name": null,
+      "id": "f2650178-02b2-4823-a940-6221f9a66a71",
+      "runtimeClass": "cronos.widgets.joint.arrow.OneToMany",
+      "target": {
+        "id": "13336d59-1914-40c8-9cba-5377a19ff285"
+      },
+      "source": {
+        "id": "1f77f9e6-5fed-4408-8d3a-154565810873"
+      },
+      "labels": [
+        {
+          "position": 0.9,
+          "attrs": {
+            "rect": {
+              "fill": "transparent"
+            },
+            "text": {
+              "text": "*",
+              "font-family": "Arial",
+              "font-size": "12px",
+              "fill": "#cecece"
+            }
+          }
+        }
+      ],
+      "z": 94,
       "attrs": {
         ".marker-target": {
           "d": "",
@@ -2811,14 +3389,17 @@
         "d87db4ea-2076-478c-9767-401d954c6185",
         "a3918144-d938-466f-a465-e8e470e14512",
         "b84d3503-712d-4dce-a65d-be07b3e427b5",
+        "c265a897-d4de-4434-a669-0195ef13bd13",
+        "70af8497-989b-4bad-b28f-2556fbefb65c",
+        "ac78114b-74b9-4107-b73c-008a8d262936",
+        "13336d59-1914-40c8-9cba-5377a19ff285",
+        "06dd0995-7f77-4c97-aaea-df908bfd4eaf",
         "7b20a468-8a29-4421-93fb-88f86e3406eb",
         "40d738b7-0781-4c27-bd41-bc04b32af1f3",
         "15004f10-da7e-4374-8681-819c32438033",
         "d96350db-3eb9-445c-859e-d7e1aa85e5b7",
-        "c265a897-d4de-4434-a669-0195ef13bd13",
-        "70af8497-989b-4bad-b28f-2556fbefb65c",
-        "43d1257c-cd48-4b82-9f4c-18984f84f023",
-        "13336d59-1914-40c8-9cba-5377a19ff285"
+        "1f77f9e6-5fed-4408-8d3a-154565810873",
+        "43d1257c-cd48-4b82-9f4c-18984f84f023"
       ]
     }
   ]

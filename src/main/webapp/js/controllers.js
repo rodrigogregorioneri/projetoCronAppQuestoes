@@ -48,6 +48,9 @@
         
       $rootScope.http = $http;
       $rootScope.Notification = Notification;
+      
+      $scope.dados = {};  
+      
 
       $scope.message = {};
       

@@ -11,13 +11,10 @@
       <thead>
         <tr class="table-header">
           <th class="">
-            <div class="">Pergunta</div>
-          </th>
-          <th class="">
-            <div class="">OpcaoPerguntas</div>
-          </th>
-          <th class="">
             <div class="">Resposta Correta</div>
+          </th>
+          <th class="">
+            <div class="">Profissionais</div>
           </th>
           <th class="">
             <div class="">{{"template.crud.actions" | translate}}</div>
@@ -28,17 +25,12 @@
         <tr class="table-content" ng-repeat="rowData in datasource.data">
           <td class="">
             <div class="">
-              {{rowData.pergunta.perguntas}}
-            </div>
-          </td>
-          <td class="">
-            <div class="">
-              {{rowData.opcaoPerguntas.opcao}}
-            </div>
-          </td>
-          <td class="">
-            <div class="">
               {{rowData.respostaCorreta}}
+            </div>
+          </td>
+          <td class="">
+            <div class="">
+              {{rowData.profissionais.sobrenome}}
             </div>
           </td>
           <td class="">
@@ -71,42 +63,6 @@
       </div>
       <br/>
       <fieldset ng-disabled="!datasource.editing &amp;&amp; !datasource.inserting">
-        <div data-component="crn-datasource" class="component-holder">
-          <datasource name="pergunta" entity="api/rest/cronapp/app/Pergunta" keys="id" class="" dependent-by="{{Respostas}}"></datasource>
-        </div>
-        <div data-component="crn-combobox" id="crn-combobox-pergunta">
-          <div class="form-group">
-            <label for="combobox-pergunta" class="">Pergunta</label>
-            <ui-select ng-model="Respostas.active.pergunta" crn-datasource="pergunta" class="crn-select" id="combobox-pergunta" >
-              <ui-select-match class="">
-                {{$select.selected.perguntas}}
-              </ui-select-match>
-              <ui-select-choices  repeat="rowData in datasource.data | filter : $select.search" class="">
-                <div class="" data-container="true">
-                  {{rowData.perguntas}}
-                </div>
-              </ui-select-choices>
-            </ui-select>
-          </div>
-        </div>
-        <div data-component="crn-datasource" class="component-holder">
-          <datasource name="opcaoPerguntas" entity="api/rest/cronapp/app/OpcaoPerguntas" keys="id" class="" dependent-by="{{Respostas}}"></datasource>
-        </div>
-        <div data-component="crn-combobox" id="crn-combobox-opcaoPerguntas">
-          <div class="form-group">
-            <label for="combobox-opcaoPerguntas" class="">OpcaoPerguntas</label>
-            <ui-select ng-model="Respostas.active.opcaoPerguntas" crn-datasource="opcaoPerguntas" class="crn-select" id="combobox-opcaoPerguntas" >
-              <ui-select-match class="">
-                {{$select.selected.opcao}}
-              </ui-select-match>
-              <ui-select-choices  repeat="rowData in datasource.data | filter : $select.search" class="">
-                <div class="" data-container="true">
-                  {{rowData.opcao}}
-                </div>
-              </ui-select-choices>
-            </ui-select>
-          </div>
-        </div>
         <div data-component="crn-textinput" id="crn-textinput-respostaCorreta">
           <div class="form-group">
             <label for="textinput-respostaCorreta" class="">Resposta Correta</label>
@@ -119,7 +75,67 @@
               >
           </div>
         </div>
+        <div data-component="crn-datasource" class="component-holder">
+          <datasource name="profissionais" entity="api/rest/cronapp/app/Profissionais" keys="id" class="" dependent-by="{{Respostas}}"></datasource>
+        </div>
+        <div data-component="crn-combobox" id="crn-combobox-profissionais">
+          <div class="form-group">
+            <label for="combobox-profissionais" class="">Profissionais</label>
+            <ui-select ng-model="Respostas.active.profissionais" crn-datasource="profissionais" class="crn-select" id="combobox-profissionais" >
+              <ui-select-match class="">
+                {{$select.selected.sobrenome}}
+              </ui-select-match>
+              <ui-select-choices  repeat="rowData in datasource.data | filter : $select.search" class="">
+                <div class="" data-container="true">
+                  {{rowData.sobrenome}}
+                </div>
+              </ui-select-choices>
+            </ui-select>
+          </div>
+        </div>
         <!-- NtoN  -->
+        <div data-component="crn-datasource" class="component-holder">
+          <datasource append="false" name="OpcaoPerguntas" entity="api/rest/cronapp/app/Respostas/{{Respostas.active.id}}/OpcaoPerguntas" keys="id" rows-per-page="100" lazy="true" auto-post="true" enabled="{{Respostas.editing || Respostas.inserting}}"dependent-lazy-post="Respostas" dependent-lazy-post-field="respostas" ></datasource>
+        </div>
+        <div data-component="crn-datasource" class="component-holder">
+          <datasource name="AllOpcaoPerguntas" entity="api/rest/cronapp/app/OpcaoPerguntas" keys="id" rows-per-page="100" enabled="{{Respostas.editing || Respostas.inserting}}"></datasource>
+        </div>
+        <div class="form-group" ng-show="datasource.editing || datasource.inserting">
+          <label for="select-ui">OpcaoPerguntas</label>
+          <div id="select-ui" data-component="crn-tags">
+            <ui-select multiple crn-datasource="AllOpcaoPerguntas" ng-model="OpcaoPerguntas.data" class="crn-select" style="min-width: 200px" theme="bootstrap" enabled="{{Respostas.editing || Respostas.inserting }}" >
+              <ui-select-match placeholder="OpcaoPerguntas...">
+                {{$item.opcao }}
+              </ui-select-match>
+              <ui-select-choices repeat="rowData in datasource.data | filter : $select.search" class="">
+                <div class="" data-container="true" draggable="true">
+                  {{rowData.opcao}}
+                </div>
+              </ui-select-choices>
+            </ui-select>
+          </div>
+        </div>
+        <div data-component="crn-datasource" class="component-holder">
+          <datasource append="false" name="Pergunta" entity="api/rest/cronapp/app/Respostas/{{Respostas.active.id}}/Pergunta" keys="id" rows-per-page="100" lazy="true" auto-post="true" enabled="{{Respostas.editing || Respostas.inserting}}"dependent-lazy-post="Respostas" dependent-lazy-post-field="respostas" ></datasource>
+        </div>
+        <div data-component="crn-datasource" class="component-holder">
+          <datasource name="AllPergunta" entity="api/rest/cronapp/app/Pergunta" keys="id" rows-per-page="100" enabled="{{Respostas.editing || Respostas.inserting}}"></datasource>
+        </div>
+        <div class="form-group" ng-show="datasource.editing || datasource.inserting">
+          <label for="select-ui">Pergunta</label>
+          <div id="select-ui" data-component="crn-tags">
+            <ui-select multiple crn-datasource="AllPergunta" ng-model="Pergunta.data" class="crn-select" style="min-width: 200px" theme="bootstrap" enabled="{{Respostas.editing || Respostas.inserting }}" >
+              <ui-select-match placeholder="Pergunta...">
+                {{$item.perguntas }}
+              </ui-select-match>
+              <ui-select-choices repeat="rowData in datasource.data | filter : $select.search" class="">
+                <div class="" data-container="true" draggable="true">
+                  {{rowData.perguntas}}
+                </div>
+              </ui-select-choices>
+            </ui-select>
+          </div>
+        </div>
         <!-- NtoN  end-->
       </fieldset>
     </form>
@@ -129,87 +145,22 @@
         <!--query filter 1toN -->
         <!-- query filter 1toN end-->
         <div data-component="crn-datasource" class="component-holder">
-          <datasource filter="" name="ProfissionaisGrid" enabled="{{Respostas.editing || Respostas.inserting}}" entity="api/rest/cronapp/app/Respostas/{{Respostas.active.id}}/Profissionais" keys="id" rows-per-page="100" lazy="true" auto-post="true" dependent-lazy-post="Respostas" dependent-lazy-post-field="respostas"></datasource>
+          <datasource filter="" name="RespostasOpcaoPerguntasGrid" enabled="{{Respostas.editing || Respostas.inserting}}" entity="api/rest/cronapp/app/Respostas/{{Respostas.active.id}}/RespostasOpcaoPerguntas" keys="id" rows-per-page="100" lazy="true" auto-post="true" dependent-lazy-post="Respostas" dependent-lazy-post-field="respostas"></datasource>
         </div>
-        <button class="btn btn-primary" onclick="$('#modalProfissionaisGrid').modal('show');" ng-click="ProfissionaisGrid.startInserting();"><i class="fa fa-plus"></i> <span class="">{{"Add" | translate}} Profissionais</span> </button>
+        <button class="btn btn-primary" onclick="$('#modalRespostasOpcaoPerguntasGrid').modal('show');" ng-click="RespostasOpcaoPerguntasGrid.startInserting();"><i class="fa fa-plus"></i> <span class="">{{"Add" | translate}} RespostasOpcaoPerguntas</span> </button>
         <!--search 1toN-->
         <!-- seach 1toN end-->
         <div data-component="crn-textinput" id="crn-textinput-descricao">
           <div class="form-group">
-            <label for="textinput-descricao" class="">Profissionais</label>
-            <div class="component-holder" data-component="crn-grid" id="crn-grid-ProfissionaisGrid">
-              <div crn-datasource="ProfissionaisGrid">
+            <label for="textinput-descricao" class="">RespostasOpcaoPerguntas</label>
+            <div class="component-holder" data-component="crn-grid" id="crn-grid-RespostasOpcaoPerguntasGrid">
+              <div crn-datasource="RespostasOpcaoPerguntasGrid">
                 <table class="table table-bordered table-hover table-striped">
                   <thead>
                     <tr class="table-header">
                       <th class="">
                         <div class="">
-                          Nome
-                        </div>
-                      </th>
-                      <th class="">
-                        <div class="">
-                          Sobrenome
-                        </div>
-                      </th>
-                      <th class="">
-                        <div class="">
-                          Idade
-                        </div>
-                      </th>
-                      <th class="">
-                        <div class="">
-                          Escolaridade
-                        </div>
-                      </th>
-                      <th class="">
-                        <div class="">
-                          Classificacao
-                        </div>
-                      </th>
-                      <th class="">
-                        <div class="">
-                          Curso
-                        </div>
-                      </th>
-                      <th class="">
-                        <div class="">
-                          Skype
-                        </div>
-                      </th>
-                      <th class="">
-                        <div class="">
-                          Whatsapp
-                        </div>
-                      </th>
-                      <th class="">
-                        <div class="">
-                          Facebook
-                        </div>
-                      </th>
-                      <th class="">
-                        <div class="">
-                          Instagram
-                        </div>
-                      </th>
-                      <th class="">
-                        <div class="">
-                          Linkedin
-                        </div>
-                      </th>
-                      <th class="">
-                        <div class="">
-                          Telefone
-                        </div>
-                      </th>
-                      <th class="">
-                        <div class="">
-                          Celular
-                        </div>
-                      </th>
-                      <th class="">
-                        <div class="">
-                          Cargo
+                          Opcaoperguntas
                         </div>
                       </th>
                       <th class="">
@@ -223,77 +174,12 @@
                     <tr class="table-content" ng-repeat="rowData in datasource.data">
                       <td>
                         <div>
-                          {{rowData.nome}}
+                          {{rowData.opcaoPerguntas.opcao }}
                         </div>
                       </td>
                       <td>
                         <div>
-                          {{rowData.sobrenome}}
-                        </div>
-                      </td>
-                      <td>
-                        <div>
-                          {{rowData.idade}}
-                        </div>
-                      </td>
-                      <td>
-                        <div>
-                          {{rowData.escolaridade}}
-                        </div>
-                      </td>
-                      <td>
-                        <div>
-                          {{rowData.classificacao}}
-                        </div>
-                      </td>
-                      <td>
-                        <div>
-                          {{rowData.curso}}
-                        </div>
-                      </td>
-                      <td>
-                        <div>
-                          {{rowData.skype}}
-                        </div>
-                      </td>
-                      <td>
-                        <div>
-                          {{rowData.whatsapp}}
-                        </div>
-                      </td>
-                      <td>
-                        <div>
-                          {{rowData.facebook}}
-                        </div>
-                      </td>
-                      <td>
-                        <div>
-                          {{rowData.instagram}}
-                        </div>
-                      </td>
-                      <td>
-                        <div>
-                          {{rowData.linkedin}}
-                        </div>
-                      </td>
-                      <td>
-                        <div>
-                          {{rowData.telefone}}
-                        </div>
-                      </td>
-                      <td>
-                        <div>
-                          {{rowData.celular}}
-                        </div>
-                      </td>
-                      <td>
-                        <div>
-                          {{rowData.cargo.ocupacao }}
-                        </div>
-                      </td>
-                      <td>
-                        <div>
-                          <button class="btn btn-default btn-sm" ng-click="datasource.startEditing(rowData)" onclick="$('#modalProfissionaisGrid').modal('show');" ><i class="fa fa-edit"></i></button>
+                          <button class="btn btn-default btn-sm" ng-click="datasource.startEditing(rowData)" onclick="$('#modalRespostasOpcaoPerguntasGrid').modal('show');" ><i class="fa fa-edit"></i></button>
                           <button class="btn btn-default btn-sm" ng-click="datasource.remove(rowData)"><i class="fa fa-times"></i></button>
                         </div>
                       </td>
@@ -307,108 +193,30 @@
             </div>
           </div>
         </div>
-        <div class="modal fade" id="modalProfissionaisGrid">
+        <div class="modal fade" id="modalRespostasOpcaoPerguntasGrid">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="{{'Home.view.Close' | translate}}"><span aria-hidden="true">×</span></button>
-                <h4 class="modal-title">Profissionais</h4>
+                <h4 class="modal-title">RespostasOpcaoPerguntas</h4>
               </div>
               <div class="modal-body">
                 <div class="text-danger wrapper text-center" ng-show="authError">
                 </div>
                 <div class="list-group list-group-sm">
-                  <div data-component="crn-textinput" id="crn-textinput-Nome">
-                    <div class="form-group">
-                      <label for="textinput-Nome">Nome</label>
-                      <input type="text" ng-model="ProfissionaisGrid.active.nome" class="form-control" id="textinput-Nome" placeholder="Nome"  >
-                    </div>
-                  </div>
-                  <div data-component="crn-textinput" id="crn-textinput-Sobrenome">
-                    <div class="form-group">
-                      <label for="textinput-Sobrenome">Sobrenome</label>
-                      <input type="text" ng-model="ProfissionaisGrid.active.sobrenome" class="form-control" id="textinput-Sobrenome" placeholder="Sobrenome"  >
-                    </div>
-                  </div>
-                  <div data-component="crn-textinput" id="crn-textinput-idade">
-                    <div class="form-group">
-                      <label for="textinput-idade">Idade</label>
-                      <input type="number"  ng-model="ProfissionaisGrid.active.idade" class="form-control" id="textinput-idade" placeholder="Idade" >
-                    </div>
-                  </div>
-                  <div data-component="crn-textinput" id="crn-textinput-escolaridade">
-                    <div class="form-group">
-                      <label for="textinput-escolaridade">Escolaridade</label>
-                      <input type="text" ng-model="ProfissionaisGrid.active.escolaridade" class="form-control" id="textinput-escolaridade" placeholder="Escolaridade"  >
-                    </div>
-                  </div>
-                  <div data-component="crn-textinput" id="crn-textinput-classificacao">
-                    <div class="form-group">
-                      <label for="textinput-classificacao">Classificacao</label>
-                      <input type="text" ng-model="ProfissionaisGrid.active.classificacao" class="form-control" id="textinput-classificacao" placeholder="Classificacao"  >
-                    </div>
-                  </div>
-                  <div data-component="crn-textinput" id="crn-textinput-curso">
-                    <div class="form-group">
-                      <label for="textinput-curso">Curso</label>
-                      <input type="text" ng-model="ProfissionaisGrid.active.curso" class="form-control" id="textinput-curso" placeholder="Curso"  >
-                    </div>
-                  </div>
-                  <div data-component="crn-textinput" id="crn-textinput-skype">
-                    <div class="form-group">
-                      <label for="textinput-skype">Skype</label>
-                      <input type="text" ng-model="ProfissionaisGrid.active.skype" class="form-control" id="textinput-skype" placeholder="Skype"  >
-                    </div>
-                  </div>
-                  <div data-component="crn-textinput" id="crn-textinput-whatsapp">
-                    <div class="form-group">
-                      <label for="textinput-whatsapp">Whatsapp</label>
-                      <input type="text" ng-model="ProfissionaisGrid.active.whatsapp" class="form-control" id="textinput-whatsapp" placeholder="Whatsapp"  >
-                    </div>
-                  </div>
-                  <div data-component="crn-textinput" id="crn-textinput-facebook">
-                    <div class="form-group">
-                      <label for="textinput-facebook">Facebook</label>
-                      <input type="text" ng-model="ProfissionaisGrid.active.facebook" class="form-control" id="textinput-facebook" placeholder="Facebook"  >
-                    </div>
-                  </div>
-                  <div data-component="crn-textinput" id="crn-textinput-instagram">
-                    <div class="form-group">
-                      <label for="textinput-instagram">Instagram</label>
-                      <input type="text" ng-model="ProfissionaisGrid.active.instagram" class="form-control" id="textinput-instagram" placeholder="Instagram"  >
-                    </div>
-                  </div>
-                  <div data-component="crn-textinput" id="crn-textinput-linkedin">
-                    <div class="form-group">
-                      <label for="textinput-linkedin">Linkedin</label>
-                      <input type="text" ng-model="ProfissionaisGrid.active.linkedin" class="form-control" id="textinput-linkedin" placeholder="Linkedin"  >
-                    </div>
-                  </div>
-                  <div data-component="crn-textinput" id="crn-textinput-telefone">
-                    <div class="form-group">
-                      <label for="textinput-telefone">Telefone</label>
-                      <input type="text" ng-model="ProfissionaisGrid.active.telefone" class="form-control" id="textinput-telefone" placeholder="Telefone"  >
-                    </div>
-                  </div>
-                  <div data-component="crn-textinput" id="crn-textinput-celular">
-                    <div class="form-group">
-                      <label for="textinput-celular">Celular</label>
-                      <input type="text" ng-model="ProfissionaisGrid.active.celular" class="form-control" id="textinput-celular" placeholder="Celular"  >
-                    </div>
-                  </div>
                   <div data-component="crn-datasource" class="component-holder">
-                    <datasource name="cargoGridForUiSelect" entity="api/rest/cronapp/app/Cargo" keys="id" rows-per-page="100" lazy="true" enabled="{{Respostas.editing || Respostas.inserting}}" ></datasource>
+                    <datasource name="opcaoPerguntasGridForUiSelect" entity="api/rest/cronapp/app/OpcaoPerguntas" keys="id" rows-per-page="100" lazy="true" enabled="{{Respostas.editing || Respostas.inserting}}" ></datasource>
                   </div>
-                  <div data-component="crn-combobox" id="crn-combobox-ProfissionaisGrid.active.cargo">
+                  <div data-component="crn-combobox" id="crn-combobox-RespostasOpcaoPerguntasGrid.active.opcaoPerguntas">
                     <div class="form-group">
-                      <label for="combobox-cargo" class="">Cargo</label>
-                      <ui-select ng-model="ProfissionaisGrid.active.cargo" crn-datasource="cargoGridForUiSelect" class="crn-select" id="combobox-cargo" required="required" >
+                      <label for="combobox-opcaoPerguntas" class="">Opcaoperguntas</label>
+                      <ui-select ng-model="RespostasOpcaoPerguntasGrid.active.opcaoPerguntas" crn-datasource="opcaoPerguntasGridForUiSelect" class="crn-select" id="combobox-opcaoPerguntas" required="required" >
                         <ui-select-match class="">
-                          {{$select.selected.ocupacao}}
+                          {{$select.selected.opcao}}
                         </ui-select-match>
                         <ui-select-choices repeat="rowData in datasource.data | filter : $select.search" class="">
                           <div class="" data-container="true">
-                            {{rowData.ocupacao}}
+                            {{rowData.opcao}}
                           </div>
                         </ui-select-choices>
                       </ui-select>
@@ -417,7 +225,96 @@
                 </div>
               </div>
               <div class="modal-footer">
-                <button class="btn btn-primary" ng-click="ProfissionaisGrid.post();" onclick="(!ProfissionaisGrid.missingRequiredField()?$('#modalProfissionaisGrid').modal('hide'):void(0))">{{'Save' | translate}}</button>
+                <button class="btn btn-primary" ng-click="RespostasOpcaoPerguntasGrid.post();" onclick="(!RespostasOpcaoPerguntasGrid.missingRequiredField()?$('#modalRespostasOpcaoPerguntasGrid').modal('hide'):void(0))">{{'Save' | translate}}</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">{{'Home.view.Close' | translate}}</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--query filter 1toN -->
+        <!-- query filter 1toN end-->
+        <div data-component="crn-datasource" class="component-holder">
+          <datasource filter="" name="PerguntaRespostasGrid" enabled="{{Respostas.editing || Respostas.inserting}}" entity="api/rest/cronapp/app/Respostas/{{Respostas.active.id}}/PerguntaRespostas" keys="id" rows-per-page="100" lazy="true" auto-post="true" dependent-lazy-post="Respostas" dependent-lazy-post-field="respostas"></datasource>
+        </div>
+        <button class="btn btn-primary" onclick="$('#modalPerguntaRespostasGrid').modal('show');" ng-click="PerguntaRespostasGrid.startInserting();"><i class="fa fa-plus"></i> <span class="">{{"Add" | translate}} PerguntaRespostas</span> </button>
+        <!--search 1toN-->
+        <!-- seach 1toN end-->
+        <div data-component="crn-textinput" id="crn-textinput-descricao">
+          <div class="form-group">
+            <label for="textinput-descricao" class="">PerguntaRespostas</label>
+            <div class="component-holder" data-component="crn-grid" id="crn-grid-PerguntaRespostasGrid">
+              <div crn-datasource="PerguntaRespostasGrid">
+                <table class="table table-bordered table-hover table-striped">
+                  <thead>
+                    <tr class="table-header">
+                      <th class="">
+                        <div class="">
+                          Pergunta
+                        </div>
+                      </th>
+                      <th class="">
+                        <div class="">
+                          {{"template.crud.actions" | translate}}
+                        </div>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="table-content" ng-repeat="rowData in datasource.data">
+                      <td>
+                        <div>
+                          {{rowData.pergunta.perguntas }}
+                        </div>
+                      </td>
+                      <td>
+                        <div>
+                          <button class="btn btn-default btn-sm" ng-click="datasource.startEditing(rowData)" onclick="$('#modalPerguntaRespostasGrid').modal('show');" ><i class="fa fa-edit"></i></button>
+                          <button class="btn btn-default btn-sm" ng-click="datasource.remove(rowData)"><i class="fa fa-times"></i></button>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="table-footer-controls">
+                  <button class="btn btn-default btn-block btn-clicked" ng-show="datasource.hasNextPage()" ng-click="datasource.nextPage()" content="{{&quot;template.crud.load_more&quot; | translate}}...">{{"template.crud.load_more" | translate}}...</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="modalPerguntaRespostasGrid">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="{{'Home.view.Close' | translate}}"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">PerguntaRespostas</h4>
+              </div>
+              <div class="modal-body">
+                <div class="text-danger wrapper text-center" ng-show="authError">
+                </div>
+                <div class="list-group list-group-sm">
+                  <div data-component="crn-datasource" class="component-holder">
+                    <datasource name="perguntaGridForUiSelect" entity="api/rest/cronapp/app/Pergunta" keys="id" rows-per-page="100" lazy="true" enabled="{{Respostas.editing || Respostas.inserting}}" ></datasource>
+                  </div>
+                  <div data-component="crn-combobox" id="crn-combobox-PerguntaRespostasGrid.active.pergunta">
+                    <div class="form-group">
+                      <label for="combobox-pergunta" class="">Pergunta</label>
+                      <ui-select ng-model="PerguntaRespostasGrid.active.pergunta" crn-datasource="perguntaGridForUiSelect" class="crn-select" id="combobox-pergunta" required="required" >
+                        <ui-select-match class="">
+                          {{$select.selected.perguntas}}
+                        </ui-select-match>
+                        <ui-select-choices repeat="rowData in datasource.data | filter : $select.search" class="">
+                          <div class="" data-container="true">
+                            {{rowData.perguntas}}
+                          </div>
+                        </ui-select-choices>
+                      </ui-select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-primary" ng-click="PerguntaRespostasGrid.post();" onclick="(!PerguntaRespostasGrid.missingRequiredField()?$('#modalPerguntaRespostasGrid').modal('hide'):void(0))">{{'Save' | translate}}</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">{{'Home.view.Close' | translate}}</button>
               </div>
             </div>
