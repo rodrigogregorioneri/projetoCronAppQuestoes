@@ -59,6 +59,13 @@ public class Empresa implements Serializable {
   private Ramo ramo;
   
   /**
+  * @generated
+  */
+  @ManyToOne
+  @JoinColumn(name="fk_pesquisa", nullable = true, referencedColumnName = "id", insertable=true, updatable=true)
+  private Pesquisa pesquisa;
+  
+  /**
    * Construtor
    * @generated
    */
@@ -177,6 +184,25 @@ public class Empresa implements Serializable {
    */
   public Empresa setRamo(Ramo ramo){
     this.ramo = ramo;
+    return this;
+  }
+  
+  /**
+   * Obtém pesquisa
+   * return pesquisa
+   * @generated
+   */
+  public Pesquisa getPesquisa(){
+    return this.pesquisa;
+  }
+  
+  /**
+   * Define pesquisa
+   * @param pesquisa pesquisa
+   * @generated
+   */
+  public Empresa setPesquisa(Pesquisa pesquisa){
+    this.pesquisa = pesquisa;
     return this;
   }
   

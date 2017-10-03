@@ -63,6 +63,11 @@ var app = (function() {
 							templateUrl : 'views/login.view.html'
 						})
 
+						.state('cadastrar', {
+							url : "/cadastrar",
+							templateUrl : 'views/cadastrar.view.html'
+						})
+
 						.state('main', {
 							url : "/",
 							controller : 'LoginController',
@@ -73,6 +78,11 @@ var app = (function() {
 							url : "/home",
 							controller : 'HomeController',
 							templateUrl : 'views/logged/home.view.html'
+						})
+
+						.state('home.form', {
+							url : "/form",
+							templateUrl : 'views/formularioPesquisa.view.html'
 						})
 
 						.state('home.pages', {
@@ -180,24 +190,90 @@ var app = (function() {
 
 								app.registerEventsCronapi($scope, $translate);
 
-								$scope.valores = {};
-								
+								console.log(sessionStorage.getItem("_u"));
+
+								var valores = {};
+
 								$scope.dados = [];
-								
+
 								$scope.empresaDados = {};
 
 								$scope.salvaPesquisa = function(perguntas) {
-									$scope.valores = $rootScope.OpcaoPerguntas.data;
-                console.log($rootScope.Pergunta.data);
-									for (i = 0; i < $scope.valores.length; i++) {
-									  
-										if ($scope.valores[i].id == "true" ) {
-										  
-											$scope.dados +=  angular.toJson($scope.valores[i]);
+									var profissional = $rootScope.Profissionais.data[0]
+									var idUsuarioLogado = $rootScope.session.user.id;
+
+									valores = $rootScope.Pergunta.data;
+									myobject = {};
+									for (i = 0; i < valores.length; i++) {
+										if (valores[i].componente.tipo_questao === "disertativa") {
+
+											myobject = {
+												'respostaCorreta' : valores[i].resposta,
+												'profissionais' : profissional,
+												'idUserLogado'  : idUsuarioLogado
+											}
+											$http(
+													{
+														method : 'POST',
+														url : 'api/rest/cronapp/app/Respostas',
+														data : myobject,
+														headers : {
+															'Content-Type' : 'application/json'
+														}
+													}).success(
+													function(data, status,
+															headers, config) {
+
+													}).error(function() {
+											});
+
+										} else {
+											opcoes = $rootScope.OpcaoPerguntas.data;
+											for (j = 0; j < opcoes.length; j++) {
+
+												if (opcoes[j].id == "true"
+														&& opcoes[j].pergunta.perguntas === valores[i].perguntas) {
+													myobject = {
+														'respostaCorreta' : opcoes[j].opcao,
+														'profissionais' : profissional,
+														 'idUserLogado'  : idUsuarioLogado
+													}
+												
+												}
+											}
+											$http(
+													{
+														method : 'POST',
+														url : 'api/rest/cronapp/app/Respostas',
+														data : myobject,
+														headers : {
+															'Content-Type' : 'application/json'
+														}
+													}).success(
+													function(data, status,
+															headers, config) {
+													}).error(function() {
+											});
 										}
 									}
-								 $scope.dados =	angular.fromJson($scope.dados);
-									console.log($scope.dados);
+								}
+
+								$scope.inseriUsuario = function(user) {
+									$http({
+										method : 'POST',
+										url : 'api/security/User',
+										data : user,
+										headers : {
+											'Content-Type' : 'application/json'
+										}
+									}).success(
+											function(data, status, headers,
+													config) {
+													  console.log("foi");
+
+											}).error(function() {
+											  console.log("Não foi");
+									});
 								}
 
 								// save state params into scope

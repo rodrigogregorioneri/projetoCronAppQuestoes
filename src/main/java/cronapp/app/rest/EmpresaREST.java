@@ -33,6 +33,13 @@ public class EmpresaREST {
    * @generated
    */
   @Autowired
+  @Qualifier("CargoBusiness")
+  private CargoBusiness cargoBusiness;
+
+  /**
+   * @generated
+   */
+  @Autowired
   @Qualifier("ProfissionaisBusiness")
   private ProfissionaisBusiness profissionaisBusiness;
 
@@ -172,6 +179,42 @@ public class EmpresaREST {
    * ManyToMany Relationship GET
    * @generated
    */
+  @RequestMapping(method = RequestMethod.GET,value="/{empresaId}/Cargo")
+  public HttpEntity<PagedResources<Cargo>> listCargo(@PathVariable("empresaId") java.lang.String empresaId, Pageable pageable, PagedResourcesAssembler assembler) {
+    return new ResponseEntity<>(assembler.toResource(empresaBusiness.listCargo(empresaId, pageable)), HttpStatus.OK); 
+  }
+
+  /**
+   * ManyToMany Relationship POST
+   * @generated
+   */  
+  @RequestMapping(method = RequestMethod.POST,value="/{empresaId}/Cargo")
+  public Empresa postCargo(@Validated @RequestBody final Cargo entity, @PathVariable("empresaId") java.lang.String empresaId) throws Exception {
+    Profissionais newProfissionais = new Profissionais();
+
+    Empresa empresa = this.empresaBusiness.get(empresaId);
+
+    newProfissionais.setCargo(entity);
+    newProfissionais.setEmpresa(empresa);
+    
+    this.profissionaisBusiness.post(newProfissionais);
+
+    return newProfissionais.getEmpresa();
+  }   
+
+  /**
+   * ManyToMany Relationship DELETE
+   * @generated
+   */  
+  @RequestMapping(method = RequestMethod.DELETE,value="/{empresaId}/Cargo/{CargoId}")
+  public void deleteCargo(@PathVariable("empresaId") java.lang.String empresaId, @PathVariable("CargoId") java.lang.String CargoId) {
+    this.empresaBusiness.deleteCargo(empresaId, CargoId);
+  }  
+
+  /**
+   * ManyToMany Relationship GET
+   * @generated
+   */
   @RequestMapping(method = RequestMethod.GET,value="/{empresaId}/Profissionais_2")
   public HttpEntity<PagedResources<Profissionais>> listProfissionais_2(@PathVariable("empresaId") java.lang.String empresaId, Pageable pageable, PagedResourcesAssembler assembler) {
     return new ResponseEntity<>(assembler.toResource(empresaBusiness.listProfissionais_2(empresaId, pageable)), HttpStatus.OK); 
@@ -212,5 +255,14 @@ public class EmpresaREST {
   @RequestMapping(method = RequestMethod.GET, value = "/{empresaId}")
   public Empresa get(@PathVariable("empresaId") java.lang.String empresaId) throws Exception {
     return empresaBusiness.get(empresaId);
+  }
+
+  /**
+   * Foreign Key pesquisa
+   * @generated
+   */
+  @RequestMapping(method = RequestMethod.GET, value="/Pesquisa/{pesquisaId}")    
+  public HttpEntity<PagedResources<Empresa>> findEmpresasByPesquisa(@PathVariable("pesquisaId") java.lang.String pesquisaId, Pageable pageable, PagedResourcesAssembler assembler) {
+    return new ResponseEntity<>(assembler.toResource(empresaBusiness.findEmpresasByPesquisa(pesquisaId, pageable)), HttpStatus.OK);
   }
 }

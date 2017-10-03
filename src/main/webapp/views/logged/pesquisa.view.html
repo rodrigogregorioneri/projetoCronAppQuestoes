@@ -11,10 +11,10 @@
       <thead>
         <tr class="table-header">
           <th class="">
-            <div class="">Nome _pesquisa</div>
+            <div class="">Id</div>
           </th>
           <th class="">
-            <div class="">Empresa</div>
+            <div class="">Nome _pesquisa</div>
           </th>
           <th class="">
             <div class="">{{"template.crud.actions" | translate}}</div>
@@ -25,12 +25,12 @@
         <tr class="table-content" ng-repeat="rowData in datasource.data">
           <td class="">
             <div class="">
-              {{rowData.nome_pesquisa}}
+              {{rowData.id}}
             </div>
           </td>
           <td class="">
             <div class="">
-              {{rowData.empresa.razao}}
+              {{rowData.nome_pesquisa}}
             </div>
           </td>
           <td class="">
@@ -75,24 +75,6 @@
               >
           </div>
         </div>
-        <div data-component="crn-datasource" class="component-holder">
-          <datasource name="empresa" entity="api/rest/cronapp/app/Empresa" keys="id" class="" dependent-by="{{Pesquisa}}"></datasource>
-        </div>
-        <div data-component="crn-combobox" id="crn-combobox-empresa">
-          <div class="form-group">
-            <label for="combobox-empresa" class="">Empresa</label>
-            <ui-select ng-model="Pesquisa.active.empresa" crn-datasource="empresa" class="crn-select" id="combobox-empresa" >
-              <ui-select-match class="">
-                {{$select.selected.razao}}
-              </ui-select-match>
-              <ui-select-choices  repeat="rowData in datasource.data | filter : $select.search" class="">
-                <div class="" data-container="true">
-                  {{rowData.razao}}
-                </div>
-              </ui-select-choices>
-            </ui-select>
-          </div>
-        </div>
         <!-- NtoN  -->
         <!-- NtoN  end-->
       </fieldset>
@@ -100,248 +82,6 @@
     <form>
         <fieldset>
             <!-- OneToN -->
-        <!--query filter 1toN -->
-        <!-- query filter 1toN end-->
-        <div data-component="crn-datasource" class="component-holder">
-          <datasource filter="" name="PerguntaGrid" enabled="{{Pesquisa.editing || Pesquisa.inserting}}" entity="api/rest/cronapp/app/Pesquisa/{{Pesquisa.active.id}}/Pergunta" keys="id" rows-per-page="100" lazy="true" auto-post="true" dependent-lazy-post="Pesquisa" dependent-lazy-post-field="pesquisa"></datasource>
-        </div>
-        <button class="btn btn-primary" onclick="$('#modalPerguntaGrid').modal('show');" ng-click="PerguntaGrid.startInserting();"><i class="fa fa-plus"></i> <span class="">{{"Add" | translate}} Pergunta</span> </button>
-        <!--search 1toN-->
-        <!-- seach 1toN end-->
-        <div data-component="crn-textinput" id="crn-textinput-descricao">
-          <div class="form-group">
-            <label for="textinput-descricao" class="">Pergunta</label>
-            <div class="component-holder" data-component="crn-grid" id="crn-grid-PerguntaGrid">
-              <div crn-datasource="PerguntaGrid">
-                <table class="table table-bordered table-hover table-striped">
-                  <thead>
-                    <tr class="table-header">
-                      <th class="">
-                        <div class="">
-                          Perguntas
-                        </div>
-                      </th>
-                      <th class="">
-                        <div class="">
-                          Tipo _questao
-                        </div>
-                      </th>
-                      <th class="">
-                        <div class="">
-                          Pesquisa Da Pergunta
-                        </div>
-                      </th>
-                      <th class="">
-                        <div class="">
-                          {{"template.crud.actions" | translate}}
-                        </div>
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr class="table-content" ng-repeat="rowData in datasource.data">
-                      <td>
-                        <div>
-                          {{rowData.perguntas}}
-                        </div>
-                      </td>
-                      <td>
-                        <div>
-                          {{rowData.tipo_questao}}
-                        </div>
-                      </td>
-                      <td>
-                        <div>
-                          {{rowData.pesquisaDaPergunta.nome_pesquisa }}
-                        </div>
-                      </td>
-                      <td>
-                        <div>
-                          <button class="btn btn-default btn-sm" ng-click="datasource.startEditing(rowData)" onclick="$('#modalPerguntaGrid').modal('show');" ><i class="fa fa-edit"></i></button>
-                          <button class="btn btn-default btn-sm" ng-click="datasource.remove(rowData)"><i class="fa fa-times"></i></button>
-                        </div>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-                <div class="table-footer-controls">
-                  <button class="btn btn-default btn-block btn-clicked" ng-show="datasource.hasNextPage()" ng-click="datasource.nextPage()" content="{{&quot;template.crud.load_more&quot; | translate}}...">{{"template.crud.load_more" | translate}}...</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="modal fade" id="modalPerguntaGrid">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="{{'Home.view.Close' | translate}}"><span aria-hidden="true">×</span></button>
-                <h4 class="modal-title">Pergunta</h4>
-              </div>
-              <div class="modal-body">
-                <div class="text-danger wrapper text-center" ng-show="authError">
-                </div>
-                <div class="list-group list-group-sm">
-                  <div data-component="crn-textinput" id="crn-textinput-perguntas">
-                    <div class="form-group">
-                      <label for="textinput-perguntas">Perguntas</label>
-                      <input type="text" ng-model="PerguntaGrid.active.perguntas" class="form-control" id="textinput-perguntas" placeholder="Perguntas"  >
-                    </div>
-                  </div>
-                  <div data-component="crn-textinput" id="crn-textinput-tipo_questao">
-                    <div class="form-group">
-                      <label for="textinput-tipo_questao">Tipo _questao</label>
-                      <input type="text" ng-model="PerguntaGrid.active.tipo_questao" class="form-control" id="textinput-tipo_questao" placeholder="Tipo _questao"  >
-                    </div>
-                  </div>
-                  <div data-component="crn-datasource" class="component-holder">
-                    <datasource name="pesquisaDaPerguntaGridForUiSelect" entity="api/rest/cronapp/app/Pesquisa" keys="id" rows-per-page="100" lazy="true" enabled="{{Pesquisa.editing || Pesquisa.inserting}}" ></datasource>
-                  </div>
-                  <div data-component="crn-combobox" id="crn-combobox-PerguntaGrid.active.pesquisaDaPergunta">
-                    <div class="form-group">
-                      <label for="combobox-pesquisaDaPergunta" class="">Pesquisa Da Pergunta</label>
-                      <ui-select ng-model="PerguntaGrid.active.pesquisaDaPergunta" crn-datasource="pesquisaDaPerguntaGridForUiSelect" class="crn-select" id="combobox-pesquisaDaPergunta" required="required" >
-                        <ui-select-match class="">
-                          {{$select.selected.nome_pesquisa}}
-                        </ui-select-match>
-                        <ui-select-choices repeat="rowData in datasource.data | filter : $select.search" class="">
-                          <div class="" data-container="true">
-                            {{rowData.nome_pesquisa}}
-                          </div>
-                        </ui-select-choices>
-                      </ui-select>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button class="btn btn-primary" ng-click="PerguntaGrid.post();" onclick="(!PerguntaGrid.missingRequiredField()?$('#modalPerguntaGrid').modal('hide'):void(0))">{{'Save' | translate}}</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">{{'Home.view.Close' | translate}}</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!--query filter 1toN -->
-        <!-- query filter 1toN end-->
-        <div data-component="crn-datasource" class="component-holder">
-          <datasource filter="" name="Pergunta_2Grid" enabled="{{Pesquisa.editing || Pesquisa.inserting}}" entity="api/rest/cronapp/app/Pesquisa/{{Pesquisa.active.id}}/Pergunta_2" keys="id" rows-per-page="100" lazy="true" auto-post="true" dependent-lazy-post="Pesquisa" dependent-lazy-post-field="pesquisa"></datasource>
-        </div>
-        <button class="btn btn-primary" onclick="$('#modalPergunta_2Grid').modal('show');" ng-click="Pergunta_2Grid.startInserting();"><i class="fa fa-plus"></i> <span class="">{{"Add" | translate}} Pergunta_2</span> </button>
-        <!--search 1toN-->
-        <!-- seach 1toN end-->
-        <div data-component="crn-textinput" id="crn-textinput-descricao">
-          <div class="form-group">
-            <label for="textinput-descricao" class="">Pergunta_2</label>
-            <div class="component-holder" data-component="crn-grid" id="crn-grid-Pergunta_2Grid">
-              <div crn-datasource="Pergunta_2Grid">
-                <table class="table table-bordered table-hover table-striped">
-                  <thead>
-                    <tr class="table-header">
-                      <th class="">
-                        <div class="">
-                          Perguntas
-                        </div>
-                      </th>
-                      <th class="">
-                        <div class="">
-                          Tipo _questao
-                        </div>
-                      </th>
-                      <th class="">
-                        <div class="">
-                          Pesquisa Da Pergunta
-                        </div>
-                      </th>
-                      <th class="">
-                        <div class="">
-                          {{"template.crud.actions" | translate}}
-                        </div>
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr class="table-content" ng-repeat="rowData in datasource.data">
-                      <td>
-                        <div>
-                          {{rowData.perguntas}}
-                        </div>
-                      </td>
-                      <td>
-                        <div>
-                          {{rowData.tipo_questao}}
-                        </div>
-                      </td>
-                      <td>
-                        <div>
-                          {{rowData.pesquisaDaPergunta.nome_pesquisa }}
-                        </div>
-                      </td>
-                      <td>
-                        <div>
-                          <button class="btn btn-default btn-sm" ng-click="datasource.startEditing(rowData)" onclick="$('#modalPergunta_2Grid').modal('show');" ><i class="fa fa-edit"></i></button>
-                          <button class="btn btn-default btn-sm" ng-click="datasource.remove(rowData)"><i class="fa fa-times"></i></button>
-                        </div>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-                <div class="table-footer-controls">
-                  <button class="btn btn-default btn-block btn-clicked" ng-show="datasource.hasNextPage()" ng-click="datasource.nextPage()" content="{{&quot;template.crud.load_more&quot; | translate}}...">{{"template.crud.load_more" | translate}}...</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="modal fade" id="modalPergunta_2Grid">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="{{'Home.view.Close' | translate}}"><span aria-hidden="true">×</span></button>
-                <h4 class="modal-title">Pergunta_2</h4>
-              </div>
-              <div class="modal-body">
-                <div class="text-danger wrapper text-center" ng-show="authError">
-                </div>
-                <div class="list-group list-group-sm">
-                  <div data-component="crn-textinput" id="crn-textinput-perguntas">
-                    <div class="form-group">
-                      <label for="textinput-perguntas">Perguntas</label>
-                      <input type="text" ng-model="Pergunta_2Grid.active.perguntas" class="form-control" id="textinput-perguntas" placeholder="Perguntas"  >
-                    </div>
-                  </div>
-                  <div data-component="crn-textinput" id="crn-textinput-tipo_questao">
-                    <div class="form-group">
-                      <label for="textinput-tipo_questao">Tipo _questao</label>
-                      <input type="text" ng-model="Pergunta_2Grid.active.tipo_questao" class="form-control" id="textinput-tipo_questao" placeholder="Tipo _questao"  >
-                    </div>
-                  </div>
-                  <div data-component="crn-datasource" class="component-holder">
-                    <datasource name="pesquisaDaPerguntaGridForUiSelect" entity="api/rest/cronapp/app/Pesquisa" keys="id" rows-per-page="100" lazy="true" enabled="{{Pesquisa.editing || Pesquisa.inserting}}" ></datasource>
-                  </div>
-                  <div data-component="crn-combobox" id="crn-combobox-Pergunta_2Grid.active.pesquisaDaPergunta">
-                    <div class="form-group">
-                      <label for="combobox-pesquisaDaPergunta" class="">Pesquisa Da Pergunta</label>
-                      <ui-select ng-model="Pergunta_2Grid.active.pesquisaDaPergunta" crn-datasource="pesquisaDaPerguntaGridForUiSelect" class="crn-select" id="combobox-pesquisaDaPergunta" required="required" >
-                        <ui-select-match class="">
-                          {{$select.selected.nome_pesquisa}}
-                        </ui-select-match>
-                        <ui-select-choices repeat="rowData in datasource.data | filter : $select.search" class="">
-                          <div class="" data-container="true">
-                            {{rowData.nome_pesquisa}}
-                          </div>
-                        </ui-select-choices>
-                      </ui-select>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button class="btn btn-primary" ng-click="Pergunta_2Grid.post();" onclick="(!Pergunta_2Grid.missingRequiredField()?$('#modalPergunta_2Grid').modal('hide'):void(0))">{{'Save' | translate}}</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">{{'Home.view.Close' | translate}}</button>
-              </div>
-            </div>
-          </div>
-        </div>
         <!-- OneToOne  end -->
 
         </fieldset>

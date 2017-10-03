@@ -33,8 +33,29 @@ public class RespostasREST {
    * @generated
    */
   @Autowired
-  @Qualifier("ProfissionaisBusiness")
-  private ProfissionaisBusiness profissionaisBusiness;
+  @Qualifier("OpcaoPerguntasBusiness")
+  private OpcaoPerguntasBusiness opcaoPerguntasBusiness;
+
+  /**
+   * @generated
+   */
+  @Autowired
+  @Qualifier("PerguntaBusiness")
+  private PerguntaBusiness perguntaBusiness;
+
+  /**
+   * @generated
+   */
+  @Autowired
+  @Qualifier("RespostasOpcaoPerguntasBusiness")
+  private RespostasOpcaoPerguntasBusiness respostasOpcaoPerguntasBusiness;
+
+  /**
+   * @generated
+   */
+  @Autowired
+  @Qualifier("PerguntaRespostasBusiness")
+  private PerguntaRespostasBusiness perguntaRespostasBusiness;
 
   /**
    * Serviço exposto para novo registro de acordo com a entidade fornecida
@@ -89,39 +110,149 @@ public class RespostasREST {
    * OneToMany Relationship GET
    * @generated
    */
-  @RequestMapping(method = RequestMethod.GET, value="/{respostasId}/Profissionais")    
-  public HttpEntity<PagedResources<Profissionais>> findProfissionais(@PathVariable("respostasId") java.lang.String respostasId, Pageable pageable, PagedResourcesAssembler assembler) {
-    return new ResponseEntity<>(assembler.toResource(respostasBusiness.findProfissionais(respostasId, pageable)), HttpStatus.OK);
+  @RequestMapping(method = RequestMethod.GET, value="/{respostasId}/RespostasOpcaoPerguntas")    
+  public HttpEntity<PagedResources<RespostasOpcaoPerguntas>> findRespostasOpcaoPerguntas(@PathVariable("respostasId") java.lang.String respostasId, Pageable pageable, PagedResourcesAssembler assembler) {
+    return new ResponseEntity<>(assembler.toResource(respostasBusiness.findRespostasOpcaoPerguntas(respostasId, pageable)), HttpStatus.OK);
   }
 
   /**
    * OneToMany Relationship DELETE 
    * @generated
    */  
-  @RequestMapping(method = RequestMethod.DELETE, value="/{respostasId}/Profissionais/{profissionaisId}")    
-  public void deleteProfissionais(@PathVariable("profissionaisId") java.lang.String profissionaisId) throws Exception {
-    this.profissionaisBusiness.delete(profissionaisId);
+  @RequestMapping(method = RequestMethod.DELETE, value="/{respostasId}/RespostasOpcaoPerguntas/{respostasOpcaoPerguntasId}")    
+  public void deleteRespostasOpcaoPerguntas(@PathVariable("respostasOpcaoPerguntasId") java.lang.String respostasOpcaoPerguntasId) throws Exception {
+    this.respostasOpcaoPerguntasBusiness.delete(respostasOpcaoPerguntasId);
   }
   
   /**
    * OneToMany Relationship PUT
    * @generated
    */  
-  @RequestMapping(method = RequestMethod.PUT, value="/{respostasId}/Profissionais")
-  public Profissionais putProfissionais(@Validated @RequestBody final Profissionais entity, @PathVariable("respostasId") java.lang.String respostasId) throws Exception {
-    return this.profissionaisBusiness.put(entity);
+  @RequestMapping(method = RequestMethod.PUT, value="/{respostasId}/RespostasOpcaoPerguntas")
+  public RespostasOpcaoPerguntas putRespostasOpcaoPerguntas(@Validated @RequestBody final RespostasOpcaoPerguntas entity, @PathVariable("respostasId") java.lang.String respostasId) throws Exception {
+    return this.respostasOpcaoPerguntasBusiness.put(entity);
   }  
   
   /**
    * OneToMany Relationship POST
    * @generated
    */  
-  @RequestMapping(method = RequestMethod.POST, value="/{respostasId}/Profissionais")
-  public Profissionais postProfissionais(@Validated @RequestBody final Profissionais entity, @PathVariable("respostasId") java.lang.String respostasId) throws Exception {
+  @RequestMapping(method = RequestMethod.POST, value="/{respostasId}/RespostasOpcaoPerguntas")
+  public RespostasOpcaoPerguntas postRespostasOpcaoPerguntas(@Validated @RequestBody final RespostasOpcaoPerguntas entity, @PathVariable("respostasId") java.lang.String respostasId) throws Exception {
     Respostas respostas = this.respostasBusiness.get(respostasId);
     entity.setRespostas(respostas);
-    return this.profissionaisBusiness.post(entity);
+    return this.respostasOpcaoPerguntasBusiness.post(entity);
   }
+
+  /**
+   * OneToMany Relationship GET
+   * @generated
+   */
+  @RequestMapping(method = RequestMethod.GET, value="/{respostasId}/PerguntaRespostas")    
+  public HttpEntity<PagedResources<PerguntaRespostas>> findPerguntaRespostas(@PathVariable("respostasId") java.lang.String respostasId, Pageable pageable, PagedResourcesAssembler assembler) {
+    return new ResponseEntity<>(assembler.toResource(respostasBusiness.findPerguntaRespostas(respostasId, pageable)), HttpStatus.OK);
+  }
+
+  /**
+   * OneToMany Relationship DELETE 
+   * @generated
+   */  
+  @RequestMapping(method = RequestMethod.DELETE, value="/{respostasId}/PerguntaRespostas/{perguntaRespostasId}")    
+  public void deletePerguntaRespostas(@PathVariable("perguntaRespostasId") java.lang.String perguntaRespostasId) throws Exception {
+    this.perguntaRespostasBusiness.delete(perguntaRespostasId);
+  }
+  
+  /**
+   * OneToMany Relationship PUT
+   * @generated
+   */  
+  @RequestMapping(method = RequestMethod.PUT, value="/{respostasId}/PerguntaRespostas")
+  public PerguntaRespostas putPerguntaRespostas(@Validated @RequestBody final PerguntaRespostas entity, @PathVariable("respostasId") java.lang.String respostasId) throws Exception {
+    return this.perguntaRespostasBusiness.put(entity);
+  }  
+  
+  /**
+   * OneToMany Relationship POST
+   * @generated
+   */  
+  @RequestMapping(method = RequestMethod.POST, value="/{respostasId}/PerguntaRespostas")
+  public PerguntaRespostas postPerguntaRespostas(@Validated @RequestBody final PerguntaRespostas entity, @PathVariable("respostasId") java.lang.String respostasId) throws Exception {
+    Respostas respostas = this.respostasBusiness.get(respostasId);
+    entity.setRespostas(respostas);
+    return this.perguntaRespostasBusiness.post(entity);
+  }
+
+  /**
+   * ManyToMany Relationship GET
+   * @generated
+   */
+  @RequestMapping(method = RequestMethod.GET,value="/{respostasId}/OpcaoPerguntas")
+  public HttpEntity<PagedResources<OpcaoPerguntas>> listOpcaoPerguntas(@PathVariable("respostasId") java.lang.String respostasId, Pageable pageable, PagedResourcesAssembler assembler) {
+    return new ResponseEntity<>(assembler.toResource(respostasBusiness.listOpcaoPerguntas(respostasId, pageable)), HttpStatus.OK); 
+  }
+
+  /**
+   * ManyToMany Relationship POST
+   * @generated
+   */  
+  @RequestMapping(method = RequestMethod.POST,value="/{respostasId}/OpcaoPerguntas")
+  public Respostas postOpcaoPerguntas(@Validated @RequestBody final OpcaoPerguntas entity, @PathVariable("respostasId") java.lang.String respostasId) throws Exception {
+    RespostasOpcaoPerguntas newRespostasOpcaoPerguntas = new RespostasOpcaoPerguntas();
+
+    Respostas respostas = this.respostasBusiness.get(respostasId);
+
+    newRespostasOpcaoPerguntas.setOpcaoPerguntas(entity);
+    newRespostasOpcaoPerguntas.setRespostas(respostas);
+    
+    this.respostasOpcaoPerguntasBusiness.post(newRespostasOpcaoPerguntas);
+
+    return newRespostasOpcaoPerguntas.getRespostas();
+  }   
+
+  /**
+   * ManyToMany Relationship DELETE
+   * @generated
+   */  
+  @RequestMapping(method = RequestMethod.DELETE,value="/{respostasId}/OpcaoPerguntas/{OpcaoPerguntasId}")
+  public void deleteOpcaoPerguntas(@PathVariable("respostasId") java.lang.String respostasId, @PathVariable("OpcaoPerguntasId") java.lang.String OpcaoPerguntasId) {
+    this.respostasBusiness.deleteOpcaoPerguntas(respostasId, OpcaoPerguntasId);
+  }  
+
+  /**
+   * ManyToMany Relationship GET
+   * @generated
+   */
+  @RequestMapping(method = RequestMethod.GET,value="/{respostasId}/Pergunta")
+  public HttpEntity<PagedResources<Pergunta>> listPergunta(@PathVariable("respostasId") java.lang.String respostasId, Pageable pageable, PagedResourcesAssembler assembler) {
+    return new ResponseEntity<>(assembler.toResource(respostasBusiness.listPergunta(respostasId, pageable)), HttpStatus.OK); 
+  }
+
+  /**
+   * ManyToMany Relationship POST
+   * @generated
+   */  
+  @RequestMapping(method = RequestMethod.POST,value="/{respostasId}/Pergunta")
+  public Respostas postPergunta(@Validated @RequestBody final Pergunta entity, @PathVariable("respostasId") java.lang.String respostasId) throws Exception {
+    PerguntaRespostas newPerguntaRespostas = new PerguntaRespostas();
+
+    Respostas respostas = this.respostasBusiness.get(respostasId);
+
+    newPerguntaRespostas.setPergunta(entity);
+    newPerguntaRespostas.setRespostas(respostas);
+    
+    this.perguntaRespostasBusiness.post(newPerguntaRespostas);
+
+    return newPerguntaRespostas.getRespostas();
+  }   
+
+  /**
+   * ManyToMany Relationship DELETE
+   * @generated
+   */  
+  @RequestMapping(method = RequestMethod.DELETE,value="/{respostasId}/Pergunta/{PerguntaId}")
+  public void deletePergunta(@PathVariable("respostasId") java.lang.String respostasId, @PathVariable("PerguntaId") java.lang.String PerguntaId) {
+    this.respostasBusiness.deletePergunta(respostasId, PerguntaId);
+  }  
 
   /**
    * Serviço exposto para recuperar a entidade de acordo com o id fornecido
@@ -134,20 +265,11 @@ public class RespostasREST {
   }
 
   /**
-   * Foreign Key pergunta
+   * Foreign Key profissionais
    * @generated
    */
-  @RequestMapping(method = RequestMethod.GET, value="/Pergunta/{perguntaId}")    
-  public HttpEntity<PagedResources<Respostas>> findRespostassByPergunta(@PathVariable("perguntaId") java.lang.String perguntaId, Pageable pageable, PagedResourcesAssembler assembler) {
-    return new ResponseEntity<>(assembler.toResource(respostasBusiness.findRespostassByPergunta(perguntaId, pageable)), HttpStatus.OK);
-  }
-
-  /**
-   * Foreign Key opcaoPerguntas
-   * @generated
-   */
-  @RequestMapping(method = RequestMethod.GET, value="/OpcaoPerguntas/{opcaoPerguntasId}")    
-  public HttpEntity<PagedResources<Respostas>> findRespostassByOpcaoPerguntas(@PathVariable("opcaoPerguntasId") java.lang.String opcaoPerguntasId, Pageable pageable, PagedResourcesAssembler assembler) {
-    return new ResponseEntity<>(assembler.toResource(respostasBusiness.findRespostassByOpcaoPerguntas(opcaoPerguntasId, pageable)), HttpStatus.OK);
+  @RequestMapping(method = RequestMethod.GET, value="/Profissionais/{profissionaisId}")    
+  public HttpEntity<PagedResources<Respostas>> findRespostassByProfissionais(@PathVariable("profissionaisId") java.lang.String profissionaisId, Pageable pageable, PagedResourcesAssembler assembler) {
+    return new ResponseEntity<>(assembler.toResource(respostasBusiness.findRespostassByProfissionais(profissionaisId, pageable)), HttpStatus.OK);
   }
 }

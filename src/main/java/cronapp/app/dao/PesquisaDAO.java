@@ -57,21 +57,28 @@ public interface PesquisaDAO extends JpaRepository<Pesquisa, java.lang.String> {
    * OneToMany Relation
    * @generated
    */
-  @Query("SELECT entity FROM OpcaoPerguntas entity WHERE entity.pesquisa.id = :id")
-  public Page<OpcaoPerguntas> findOpcaoPerguntas(@Param(value="id") java.lang.String id, Pageable pageable);
+  @Query("SELECT entity FROM Empresa entity WHERE entity.pesquisa.id = :id")
+  public Page<Empresa> findEmpresa(@Param(value="id") java.lang.String id, Pageable pageable);
+
+  /**
+   * OneToMany Relation
+   * @generated
+   */
+  @Query("SELECT entity FROM Pergunta entity WHERE entity.pesquisa.id = :id")
+  public Page<Pergunta> findPergunta(@Param(value="id") java.lang.String id, Pageable pageable);
   /**
    * ManyToOne Relation
    * @generated
    */
-  @Query("SELECT entity.pergunta FROM OpcaoPerguntas entity WHERE entity.pesquisa.id = :id")
-  public Page<Pergunta> listPergunta(@Param(value="id") java.lang.String id, Pageable pageable);
+  @Query("SELECT entity.componente FROM Pergunta entity WHERE entity.pesquisa.id = :id")
+  public Page<Componente> listComponente(@Param(value="id") java.lang.String id, Pageable pageable);
 
   /**
    * ManyToOne Relation Delete
    * @generated
    */
   @Modifying
-  @Query("DELETE FROM OpcaoPerguntas entity WHERE entity.pesquisa.id = :instanceId AND entity.pergunta.id = :relationId")
-  public int deletePergunta(@Param(value="instanceId") java.lang.String instanceId, @Param(value="relationId") java.lang.String relationId);
+  @Query("DELETE FROM Pergunta entity WHERE entity.pesquisa.id = :instanceId AND entity.componente.id = :relationId")
+  public int deleteComponente(@Param(value="instanceId") java.lang.String instanceId, @Param(value="relationId") java.lang.String relationId);
 
 }

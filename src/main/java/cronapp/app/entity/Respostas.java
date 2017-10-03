@@ -30,22 +30,21 @@ public class Respostas implements Serializable {
   /**
   * @generated
   */
-  @ManyToOne
-  @JoinColumn(name="fk_pergunta", nullable = true, referencedColumnName = "id", insertable=true, updatable=true)
-  private Pergunta pergunta;
-  
-  /**
-  * @generated
-  */
-  @ManyToOne
-  @JoinColumn(name="fk_opcaoPerguntas", nullable = true, referencedColumnName = "id", insertable=true, updatable=true)
-  private OpcaoPerguntas opcaoPerguntas;
-  
-  /**
-  * @generated
-  */
   @Column(name = "respostaCorreta", nullable = true, unique = false, insertable=true, updatable=true)
   private java.lang.String respostaCorreta;
+  
+  /**
+  * @generated
+  */
+  @ManyToOne
+  @JoinColumn(name="fk_profissionais", nullable = true, referencedColumnName = "id", insertable=true, updatable=true)
+  private Profissionais profissionais;
+  
+  /**
+  * @generated
+  */
+  @Column(name = "idUserLogado", nullable = true, unique = false, insertable=true, updatable=true)
+  private java.lang.String idUserLogado;
   
   /**
    * Construtor
@@ -75,44 +74,6 @@ public class Respostas implements Serializable {
   }
   
   /**
-   * Obtém pergunta
-   * return pergunta
-   * @generated
-   */
-  public Pergunta getPergunta(){
-    return this.pergunta;
-  }
-  
-  /**
-   * Define pergunta
-   * @param pergunta pergunta
-   * @generated
-   */
-  public Respostas setPergunta(Pergunta pergunta){
-    this.pergunta = pergunta;
-    return this;
-  }
-  
-  /**
-   * Obtém opcaoPerguntas
-   * return opcaoPerguntas
-   * @generated
-   */
-  public OpcaoPerguntas getOpcaoPerguntas(){
-    return this.opcaoPerguntas;
-  }
-  
-  /**
-   * Define opcaoPerguntas
-   * @param opcaoPerguntas opcaoPerguntas
-   * @generated
-   */
-  public Respostas setOpcaoPerguntas(OpcaoPerguntas opcaoPerguntas){
-    this.opcaoPerguntas = opcaoPerguntas;
-    return this;
-  }
-  
-  /**
    * Obtém respostaCorreta
    * return respostaCorreta
    * @generated
@@ -128,6 +89,44 @@ public class Respostas implements Serializable {
    */
   public Respostas setRespostaCorreta(java.lang.String respostaCorreta){
     this.respostaCorreta = respostaCorreta;
+    return this;
+  }
+  
+  /**
+   * Obtém profissionais
+   * return profissionais
+   * @generated
+   */
+  public Profissionais getProfissionais(){
+    return this.profissionais;
+  }
+  
+  /**
+   * Define profissionais
+   * @param profissionais profissionais
+   * @generated
+   */
+  public Respostas setProfissionais(Profissionais profissionais){
+    this.profissionais = profissionais;
+    return this;
+  }
+  
+  /**
+   * Obtém idUserLogado
+   * return idUserLogado
+   * @generated
+   */
+  public java.lang.String getIdUserLogado(){
+    return this.idUserLogado;
+  }
+  
+  /**
+   * Define idUserLogado
+   * @param idUserLogado idUserLogado
+   * @generated
+   */
+  public Respostas setIdUserLogado(java.lang.String idUserLogado){
+    this.idUserLogado = idUserLogado;
     return this;
   }
   

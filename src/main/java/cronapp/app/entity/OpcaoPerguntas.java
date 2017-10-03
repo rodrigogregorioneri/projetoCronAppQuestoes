@@ -41,13 +41,6 @@ public class OpcaoPerguntas implements Serializable {
   private Pergunta pergunta;
   
   /**
-  * @generated
-  */
-  @ManyToOne
-  @JoinColumn(name="fk_pesquisa", nullable = true, referencedColumnName = "id", insertable=true, updatable=true)
-  private Pesquisa pesquisa;
-  
-  /**
    * Construtor
    * @generated
    */
@@ -109,25 +102,6 @@ public class OpcaoPerguntas implements Serializable {
    */
   public OpcaoPerguntas setPergunta(Pergunta pergunta){
     this.pergunta = pergunta;
-    return this;
-  }
-  
-  /**
-   * Obtém pesquisa
-   * return pesquisa
-   * @generated
-   */
-  public Pesquisa getPesquisa(){
-    return this.pesquisa;
-  }
-  
-  /**
-   * Define pesquisa
-   * @param pesquisa pesquisa
-   * @generated
-   */
-  public OpcaoPerguntas setPesquisa(Pesquisa pesquisa){
-    this.pesquisa = pesquisa;
     return this;
   }
   

@@ -106,35 +106,85 @@ public class RespostasBusiness {
    * @generated modifiable
    * OneToMany Relation
    */  
-  public Page<Profissionais> findProfissionais(java.lang.String id, Pageable pageable) {
+  public Page<RespostasOpcaoPerguntas> findRespostasOpcaoPerguntas(java.lang.String id, Pageable pageable) {
     // begin-user-code
     // end-user-code  
-    Page<Profissionais> result = repository.findProfissionais(id, pageable);
+    Page<RespostasOpcaoPerguntas> result = repository.findRespostasOpcaoPerguntas(id, pageable);
+    // begin-user-code  
+    // end-user-code        
+    return result;    
+  }
+  
+  /**
+   * @generated modifiable
+   * OneToMany Relation
+   */  
+  public Page<PerguntaRespostas> findPerguntaRespostas(java.lang.String id, Pageable pageable) {
+    // begin-user-code
+    // end-user-code  
+    Page<PerguntaRespostas> result = repository.findPerguntaRespostas(id, pageable);
     // begin-user-code  
     // end-user-code        
     return result;    
   }
   /**
-   * Foreign Key pergunta
-   * @generated
-   */
-  public Page<Respostas> findRespostassByPergunta(java.lang.String instanceId, Pageable pageable) {
+   * @generated modifiable
+   * ManyToMany Relation
+   */  
+  public Page<OpcaoPerguntas> listOpcaoPerguntas(java.lang.String id, Pageable pageable) {
     // begin-user-code
     // end-user-code  
-    Page<Respostas> result = repository.findRespostassByPergunta(instanceId, pageable);
-    // begin-user-code  
-    // end-user-code        
-    return result;
+    Page<OpcaoPerguntas> result = repository.listOpcaoPerguntas(id, pageable);
+    // begin-user-code
+    // end-user-code
+    return result;            
   }
   
   /**
-   * Foreign Key opcaoPerguntas
-   * @generated
-   */
-  public Page<Respostas> findRespostassByOpcaoPerguntas(java.lang.String instanceId, Pageable pageable) {
+   * @generated modifiable
+   * ManyToMany Relation
+   */    
+  public int deleteOpcaoPerguntas(java.lang.String instanceId, java.lang.String relationId) {
     // begin-user-code
     // end-user-code  
-    Page<Respostas> result = repository.findRespostassByOpcaoPerguntas(instanceId, pageable);
+    int result = repository.deleteOpcaoPerguntas(instanceId, relationId);
+    // begin-user-code
+    // end-user-code  
+    return result;  
+  }
+  /**
+   * @generated modifiable
+   * ManyToMany Relation
+   */  
+  public Page<Pergunta> listPergunta(java.lang.String id, Pageable pageable) {
+    // begin-user-code
+    // end-user-code  
+    Page<Pergunta> result = repository.listPergunta(id, pageable);
+    // begin-user-code
+    // end-user-code
+    return result;            
+  }
+  
+  /**
+   * @generated modifiable
+   * ManyToMany Relation
+   */    
+  public int deletePergunta(java.lang.String instanceId, java.lang.String relationId) {
+    // begin-user-code
+    // end-user-code  
+    int result = repository.deletePergunta(instanceId, relationId);
+    // begin-user-code
+    // end-user-code  
+    return result;  
+  }
+  /**
+   * Foreign Key profissionais
+   * @generated
+   */
+  public Page<Respostas> findRespostassByProfissionais(java.lang.String instanceId, Pageable pageable) {
+    // begin-user-code
+    // end-user-code  
+    Page<Respostas> result = repository.findRespostassByProfissionais(instanceId, pageable);
     // begin-user-code  
     // end-user-code        
     return result;

@@ -59,5 +59,19 @@ public interface CargoDAO extends JpaRepository<Cargo, java.lang.String> {
    */
   @Query("SELECT entity FROM Profissionais entity WHERE entity.cargo.id = :id")
   public Page<Profissionais> findProfissionais(@Param(value="id") java.lang.String id, Pageable pageable);
+  /**
+   * ManyToOne Relation
+   * @generated
+   */
+  @Query("SELECT entity.empresa FROM Profissionais entity WHERE entity.cargo.id = :id")
+  public Page<Empresa> listEmpresa(@Param(value="id") java.lang.String id, Pageable pageable);
+
+  /**
+   * ManyToOne Relation Delete
+   * @generated
+   */
+  @Modifying
+  @Query("DELETE FROM Profissionais entity WHERE entity.cargo.id = :instanceId AND entity.empresa.id = :relationId")
+  public int deleteEmpresa(@Param(value="instanceId") java.lang.String instanceId, @Param(value="relationId") java.lang.String relationId);
 
 }

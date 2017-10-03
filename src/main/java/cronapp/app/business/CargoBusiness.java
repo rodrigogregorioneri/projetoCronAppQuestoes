@@ -114,4 +114,29 @@ public class CargoBusiness {
     // end-user-code        
     return result;    
   }
+  /**
+   * @generated modifiable
+   * ManyToMany Relation
+   */  
+  public Page<Empresa> listEmpresa(java.lang.String id, Pageable pageable) {
+    // begin-user-code
+    // end-user-code  
+    Page<Empresa> result = repository.listEmpresa(id, pageable);
+    // begin-user-code
+    // end-user-code
+    return result;            
+  }
+  
+  /**
+   * @generated modifiable
+   * ManyToMany Relation
+   */    
+  public int deleteEmpresa(java.lang.String instanceId, java.lang.String relationId) {
+    // begin-user-code
+    // end-user-code  
+    int result = repository.deleteEmpresa(instanceId, relationId);
+    // begin-user-code
+    // end-user-code  
+    return result;  
+  }
 }

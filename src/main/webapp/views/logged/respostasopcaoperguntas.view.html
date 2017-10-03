@@ -11,6 +11,9 @@
       <thead>
         <tr class="table-header">
           <th class="">
+            <div class="">Id</div>
+          </th>
+          <th class="">
             <div class="">Respostas</div>
           </th>
           <th class="">
@@ -23,6 +26,11 @@
       </thead>
       <tbody>
         <tr class="table-content" ng-repeat="rowData in datasource.data">
+          <td class="">
+            <div class="">
+              {{rowData.id}}
+            </div>
+          </td>
           <td class="">
             <div class="">
               {{rowData.respostas.respostaCorreta}}

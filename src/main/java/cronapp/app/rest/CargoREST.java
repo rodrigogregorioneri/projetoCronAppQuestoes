@@ -33,6 +33,13 @@ public class CargoREST {
    * @generated
    */
   @Autowired
+  @Qualifier("EmpresaBusiness")
+  private EmpresaBusiness empresaBusiness;
+
+  /**
+   * @generated
+   */
+  @Autowired
   @Qualifier("ProfissionaisBusiness")
   private ProfissionaisBusiness profissionaisBusiness;
 
@@ -122,6 +129,42 @@ public class CargoREST {
     entity.setCargo(cargo);
     return this.profissionaisBusiness.post(entity);
   }
+
+  /**
+   * ManyToMany Relationship GET
+   * @generated
+   */
+  @RequestMapping(method = RequestMethod.GET,value="/{cargoId}/Empresa")
+  public HttpEntity<PagedResources<Empresa>> listEmpresa(@PathVariable("cargoId") java.lang.String cargoId, Pageable pageable, PagedResourcesAssembler assembler) {
+    return new ResponseEntity<>(assembler.toResource(cargoBusiness.listEmpresa(cargoId, pageable)), HttpStatus.OK); 
+  }
+
+  /**
+   * ManyToMany Relationship POST
+   * @generated
+   */  
+  @RequestMapping(method = RequestMethod.POST,value="/{cargoId}/Empresa")
+  public Cargo postEmpresa(@Validated @RequestBody final Empresa entity, @PathVariable("cargoId") java.lang.String cargoId) throws Exception {
+    Profissionais newProfissionais = new Profissionais();
+
+    Cargo cargo = this.cargoBusiness.get(cargoId);
+
+    newProfissionais.setEmpresa(entity);
+    newProfissionais.setCargo(cargo);
+    
+    this.profissionaisBusiness.post(newProfissionais);
+
+    return newProfissionais.getCargo();
+  }   
+
+  /**
+   * ManyToMany Relationship DELETE
+   * @generated
+   */  
+  @RequestMapping(method = RequestMethod.DELETE,value="/{cargoId}/Empresa/{EmpresaId}")
+  public void deleteEmpresa(@PathVariable("cargoId") java.lang.String cargoId, @PathVariable("EmpresaId") java.lang.String EmpresaId) {
+    this.cargoBusiness.deleteEmpresa(cargoId, EmpresaId);
+  }  
 
   /**
    * Serviço exposto para recuperar a entidade de acordo com o id fornecido

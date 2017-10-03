@@ -1,0 +1,35 @@
+<div class="component-holder ng-binding ng-scope" data-component="crn-datasource" id="crn-datasource-158098"> 
+  <!--<datasource filter="" name="Pergunta" entity="api/rest/cronapp/app/Pergunta" keys="id" rows-per-page="100" delete-message="Deseja remover?" class=""></datasource>--> 
+  <!--<datasource filter="" name="Opcoes" entity="api/rest/cronapp/app/Opcoes" keys="id" rows-per-page="100" delete-message="Deseja remover?" class=""></datasource>--> 
+  <!--<datasource filter="" name="OpcaoPerguntas" entity="api/rest/cronapp/app/OpcaoPerguntas" keys="id" rows-per-page="100" delete-message="Deseja remover?" class=""></datasource>--> 
+  <!--<datasource filter="" name="Pesquisa" entity="api/rest/cronapp/app/Pesquisa" keys="id" rows-per-page="100" delete-message="Deseja remover?" class=""></datasource>--> 
+  <!--<datasource filter="" name="Respostas" entity="api/rest/cronapp/app/Respostas" keys="id" rows-per-page="100" delete-message="Deseja remover?" class=""></datasource>--> 
+  <datasource filter="" name="Profissionais" entity="api/rest/cronapp/app/Profissionais" keys="id" rows-per-page="100" delete-message="Deseja remover?" class=""></datasource> 
+  <datasource filter="" name="Pergunta" entity="api/rest/cronapp/app/Pergunta" keys="id" rows-per-page="100" delete-message="Deseja remover?" class=""></datasource> 
+  <datasource filter="" name="OpcaoPerguntas" entity="api/rest/cronapp/app/OpcaoPerguntas" keys="id" rows-per-page="100" delete-message="Deseja remover?" class=""></datasource> 
+  <datasource filter="" name="Respostas" entity="api/rest/cronapp/app/Respostas" keys="id" rows-per-page="100" delete-message="Deseja remover?" class=""></datasource> 
+</div> 
+<div crn-datasource="Profissionais"> 
+  <div crn-datasource="Pergunta" class="form-group"> 
+    <div ng-if="rowData.pesquisa.nome_pesquisa == Profissionais.data[0].empresa.pesquisa.nome_pesquisa " ng-repeat="rowData in datasource.data" class="col-md-6" ng-model="pergunta = rowData.perguntas; pesquisa = rowData;"> 
+      <h3>{{rowData.perguntas}} </h3> 
+      <div crn-datasource="OpcaoPerguntas" class=""> 
+        <div class="component-holder ng-binding ng-scope btn-group" data-component="crn-radiogroup" id="crn-radiogroup-845069"> 
+          <div ng-repeat="(key,rowData) in datasource.data | filter: pergunta" class="form-group" ng-model=""> 
+            <div ng-if="rowData.pergunta.componente.tipo_questao == 'alternativa'" class="checkbox"> 
+              <div class="checkbox"> 
+                <label style="font-size: 1.5em"> <input type="checkbox" ng-true-value="'true'" ng-model="rowData.id" crn-value="{{rowData.opcao}}" value="{{rowData.opcao}}" name="optionsRadios" id="optionsRadios"> <span class="cr"><i class="cr-icon fa fa-check"></i></span> {{rowData.opcao}} </label> 
+              </div> 
+            </div> 
+          </div> 
+          <div ng-if="rowData.componente.tipo_questao == 'disertativa'" > 
+              <textarea  ng-model="rowData.resposta" md-maxlength="150" rows="5" style="width:400px" md-select-on-focus></textarea> 
+          </div> 
+        </div> 
+      </div> 
+    </div> 
+    <div class="col-md-12"> 
+      <button class="btn btn-primary" ng-click="salvaPesquisa(OpcaoPerguntas)">{{'Save' | translate}}</button> 
+    </div> 
+  </div> 
+</div>

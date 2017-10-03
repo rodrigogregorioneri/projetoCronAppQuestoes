@@ -64,35 +64,35 @@ public interface PerguntaDAO extends JpaRepository<Pergunta, java.lang.String> {
    * OneToMany Relation
    * @generated
    */
-  @Query("SELECT entity FROM Respostas entity WHERE entity.pergunta.id = :id")
-  public Page<Respostas> findRespostas(@Param(value="id") java.lang.String id, Pageable pageable);
+  @Query("SELECT entity FROM PerguntaRespostas entity WHERE entity.pergunta.id = :id")
+  public Page<PerguntaRespostas> findPerguntaRespostas(@Param(value="id") java.lang.String id, Pageable pageable);
   /**
    * ManyToOne Relation
    * @generated
    */
-  @Query("SELECT entity.pesquisa FROM OpcaoPerguntas entity WHERE entity.pergunta.id = :id")
-  public Page<Pesquisa> listPesquisa(@Param(value="id") java.lang.String id, Pageable pageable);
+  @Query("SELECT entity.respostas FROM PerguntaRespostas entity WHERE entity.pergunta.id = :id")
+  public Page<Respostas> listRespostas(@Param(value="id") java.lang.String id, Pageable pageable);
 
   /**
    * ManyToOne Relation Delete
    * @generated
    */
   @Modifying
-  @Query("DELETE FROM OpcaoPerguntas entity WHERE entity.pergunta.id = :instanceId AND entity.pesquisa.id = :relationId")
-  public int deletePesquisa(@Param(value="instanceId") java.lang.String instanceId, @Param(value="relationId") java.lang.String relationId);
-  /**
-   * ManyToOne Relation
-   * @generated
-   */
-  @Query("SELECT entity.opcaoPerguntas FROM Respostas entity WHERE entity.pergunta.id = :id")
-  public Page<OpcaoPerguntas> listOpcaoPerguntas_2(@Param(value="id") java.lang.String id, Pageable pageable);
+  @Query("DELETE FROM PerguntaRespostas entity WHERE entity.pergunta.id = :instanceId AND entity.respostas.id = :relationId")
+  public int deleteRespostas(@Param(value="instanceId") java.lang.String instanceId, @Param(value="relationId") java.lang.String relationId);
 
   /**
-   * ManyToOne Relation Delete
+   * Foreign Key pesquisa
    * @generated
    */
-  @Modifying
-  @Query("DELETE FROM Respostas entity WHERE entity.pergunta.id = :instanceId AND entity.opcaoPerguntas.id = :relationId")
-  public int deleteOpcaoPerguntas_2(@Param(value="instanceId") java.lang.String instanceId, @Param(value="relationId") java.lang.String relationId);
+  @Query("SELECT entity FROM Pergunta entity WHERE entity.pesquisa.id = :id")
+  public Page<Pergunta> findPerguntasByPesquisa(@Param(value="id") java.lang.String id, Pageable pageable);
+
+  /**
+   * Foreign Key componente
+   * @generated
+   */
+  @Query("SELECT entity FROM Pergunta entity WHERE entity.componente.id = :id")
+  public Page<Pergunta> findPerguntasByComponente(@Param(value="id") java.lang.String id, Pageable pageable);
 
 }

@@ -131,6 +131,31 @@ public class EmpresaBusiness {
    * @generated modifiable
    * ManyToMany Relation
    */  
+  public Page<Cargo> listCargo(java.lang.String id, Pageable pageable) {
+    // begin-user-code
+    // end-user-code  
+    Page<Cargo> result = repository.listCargo(id, pageable);
+    // begin-user-code
+    // end-user-code
+    return result;            
+  }
+  
+  /**
+   * @generated modifiable
+   * ManyToMany Relation
+   */    
+  public int deleteCargo(java.lang.String instanceId, java.lang.String relationId) {
+    // begin-user-code
+    // end-user-code  
+    int result = repository.deleteCargo(instanceId, relationId);
+    // begin-user-code
+    // end-user-code  
+    return result;  
+  }
+  /**
+   * @generated modifiable
+   * ManyToMany Relation
+   */  
   public Page<Profissionais> listProfissionais_2(java.lang.String id, Pageable pageable) {
     // begin-user-code
     // end-user-code  
@@ -152,4 +177,17 @@ public class EmpresaBusiness {
     // end-user-code  
     return result;  
   }
+  /**
+   * Foreign Key pesquisa
+   * @generated
+   */
+  public Page<Empresa> findEmpresasByPesquisa(java.lang.String instanceId, Pageable pageable) {
+    // begin-user-code
+    // end-user-code  
+    Page<Empresa> result = repository.findEmpresasByPesquisa(instanceId, pageable);
+    // begin-user-code  
+    // end-user-code        
+    return result;
+  }
+  
 }

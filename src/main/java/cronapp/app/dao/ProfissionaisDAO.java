@@ -66,6 +66,13 @@ public interface ProfissionaisDAO extends JpaRepository<Profissionais, java.lang
    */
   @Query("SELECT entity FROM Cidades entity WHERE entity.profissionais.id = :id")
   public Page<Cidades> findCidades(@Param(value="id") java.lang.String id, Pageable pageable);
+
+  /**
+   * OneToMany Relation
+   * @generated
+   */
+  @Query("SELECT entity FROM Respostas entity WHERE entity.profissionais.id = :id")
+  public Page<Respostas> findRespostas(@Param(value="id") java.lang.String id, Pageable pageable);
   /**
    * ManyToOne Relation
    * @generated
@@ -94,12 +101,5 @@ public interface ProfissionaisDAO extends JpaRepository<Profissionais, java.lang
    */
   @Query("SELECT entity FROM Profissionais entity WHERE entity.empresa.id = :id")
   public Page<Profissionais> findProfissionaissByEmpresa(@Param(value="id") java.lang.String id, Pageable pageable);
-
-  /**
-   * Foreign Key respostas
-   * @generated
-   */
-  @Query("SELECT entity FROM Profissionais entity WHERE entity.respostas.id = :id")
-  public Page<Profissionais> findProfissionaissByRespostas(@Param(value="id") java.lang.String id, Pageable pageable);
 
 }

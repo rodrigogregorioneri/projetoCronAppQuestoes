@@ -116,15 +116,14 @@ public class Profissionais implements Serializable {
   /**
   * @generated
   */
-  @ManyToOne
-  @JoinColumn(name="fk_respostas", nullable = true, referencedColumnName = "id", insertable=true, updatable=true)
-  private Respostas respostas;
+  @Column(name = "nome", nullable = true, unique = false, insertable=true, updatable=true)
+  private java.lang.String nome;
   
   /**
   * @generated
   */
-  @Column(name = "nome", nullable = true, unique = false, insertable=true, updatable=true)
-  private java.lang.String nome;
+  @Column(name = "iduser", nullable = true, unique = false, insertable=true, updatable=true)
+  private java.lang.String iduser;
   
   /**
    * Construtor
@@ -420,25 +419,6 @@ public class Profissionais implements Serializable {
   }
   
   /**
-   * Obtém respostas
-   * return respostas
-   * @generated
-   */
-  public Respostas getRespostas(){
-    return this.respostas;
-  }
-  
-  /**
-   * Define respostas
-   * @param respostas respostas
-   * @generated
-   */
-  public Profissionais setRespostas(Respostas respostas){
-    this.respostas = respostas;
-    return this;
-  }
-  
-  /**
    * Obtém nome
    * return nome
    * @generated
@@ -454,6 +434,25 @@ public class Profissionais implements Serializable {
    */
   public Profissionais setNome(java.lang.String nome){
     this.nome = nome;
+    return this;
+  }
+  
+  /**
+   * Obtém iduser
+   * return iduser
+   * @generated
+   */
+  public java.lang.String getIduser(){
+    return this.iduser;
+  }
+  
+  /**
+   * Define iduser
+   * @param iduser iduser
+   * @generated
+   */
+  public Profissionais setIduser(java.lang.String iduser){
+    this.iduser = iduser;
     return this;
   }
   

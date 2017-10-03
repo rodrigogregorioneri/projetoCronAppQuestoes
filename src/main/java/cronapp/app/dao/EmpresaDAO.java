@@ -70,6 +70,20 @@ public interface EmpresaDAO extends JpaRepository<Empresa, java.lang.String> {
    * ManyToOne Relation
    * @generated
    */
+  @Query("SELECT entity.cargo FROM Profissionais entity WHERE entity.empresa.id = :id")
+  public Page<Cargo> listCargo(@Param(value="id") java.lang.String id, Pageable pageable);
+
+  /**
+   * ManyToOne Relation Delete
+   * @generated
+   */
+  @Modifying
+  @Query("DELETE FROM Profissionais entity WHERE entity.empresa.id = :instanceId AND entity.cargo.id = :relationId")
+  public int deleteCargo(@Param(value="instanceId") java.lang.String instanceId, @Param(value="relationId") java.lang.String relationId);
+  /**
+   * ManyToOne Relation
+   * @generated
+   */
   @Query("SELECT entity.profissionais FROM Cidades entity WHERE entity.empresa.id = :id")
   public Page<Profissionais> listProfissionais_2(@Param(value="id") java.lang.String id, Pageable pageable);
 
@@ -80,5 +94,12 @@ public interface EmpresaDAO extends JpaRepository<Empresa, java.lang.String> {
   @Modifying
   @Query("DELETE FROM Cidades entity WHERE entity.empresa.id = :instanceId AND entity.profissionais.id = :relationId")
   public int deleteProfissionais_2(@Param(value="instanceId") java.lang.String instanceId, @Param(value="relationId") java.lang.String relationId);
+
+  /**
+   * Foreign Key pesquisa
+   * @generated
+   */
+  @Query("SELECT entity FROM Empresa entity WHERE entity.pesquisa.id = :id")
+  public Page<Empresa> findEmpresasByPesquisa(@Param(value="id") java.lang.String id, Pageable pageable);
 
 }

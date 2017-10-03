@@ -33,7 +33,22 @@
         }
         
         // Redirect to home page
-        $state.go("home");
+         var sessao = $rootScope.session;
+         console.log(sessao.user.roles);
+         console.log(sessao.roles);
+         
+        
+       // $state.go("home");
+     
+        if(sessao.roles == "Administrators, Public"){
+          $state.go("home");
+        }else if(sessao.roles == "Public"){
+          $state.go("home.form");
+        }else{
+           $state.go("home");
+        }
+    
+      
       }
 
       function handleError(data, status, headers, config) {

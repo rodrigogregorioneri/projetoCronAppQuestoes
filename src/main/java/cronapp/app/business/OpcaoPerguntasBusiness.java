@@ -106,10 +106,10 @@ public class OpcaoPerguntasBusiness {
    * @generated modifiable
    * OneToMany Relation
    */  
-  public Page<Respostas> findRespostas(java.lang.String id, Pageable pageable) {
+  public Page<RespostasOpcaoPerguntas> findRespostasOpcaoPerguntas(java.lang.String id, Pageable pageable) {
     // begin-user-code
     // end-user-code  
-    Page<Respostas> result = repository.findRespostas(id, pageable);
+    Page<RespostasOpcaoPerguntas> result = repository.findRespostasOpcaoPerguntas(id, pageable);
     // begin-user-code  
     // end-user-code        
     return result;    
@@ -118,10 +118,10 @@ public class OpcaoPerguntasBusiness {
    * @generated modifiable
    * ManyToMany Relation
    */  
-  public Page<Pergunta> listPergunta(java.lang.String id, Pageable pageable) {
+  public Page<Respostas> listRespostas(java.lang.String id, Pageable pageable) {
     // begin-user-code
     // end-user-code  
-    Page<Pergunta> result = repository.listPergunta(id, pageable);
+    Page<Respostas> result = repository.listRespostas(id, pageable);
     // begin-user-code
     // end-user-code
     return result;            
@@ -131,10 +131,10 @@ public class OpcaoPerguntasBusiness {
    * @generated modifiable
    * ManyToMany Relation
    */    
-  public int deletePergunta(java.lang.String instanceId, java.lang.String relationId) {
+  public int deleteRespostas(java.lang.String instanceId, java.lang.String relationId) {
     // begin-user-code
     // end-user-code  
-    int result = repository.deletePergunta(instanceId, relationId);
+    int result = repository.deleteRespostas(instanceId, relationId);
     // begin-user-code
     // end-user-code  
     return result;  
@@ -147,19 +147,6 @@ public class OpcaoPerguntasBusiness {
     // begin-user-code
     // end-user-code  
     Page<OpcaoPerguntas> result = repository.findOpcaoPerguntassByPergunta(instanceId, pageable);
-    // begin-user-code  
-    // end-user-code        
-    return result;
-  }
-  
-  /**
-   * Foreign Key pesquisa
-   * @generated
-   */
-  public Page<OpcaoPerguntas> findOpcaoPerguntassByPesquisa(java.lang.String instanceId, Pageable pageable) {
-    // begin-user-code
-    // end-user-code  
-    Page<OpcaoPerguntas> result = repository.findOpcaoPerguntassByPesquisa(instanceId, pageable);
     // begin-user-code  
     // end-user-code        
     return result;

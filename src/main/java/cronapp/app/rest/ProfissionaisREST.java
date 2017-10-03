@@ -51,6 +51,13 @@ public class ProfissionaisREST {
   private CidadesBusiness cidadesBusiness;
 
   /**
+   * @generated
+   */
+  @Autowired
+  @Qualifier("RespostasBusiness")
+  private RespostasBusiness respostasBusiness;
+
+  /**
    * Serviço exposto para novo registro de acordo com a entidade fornecida
    * 
    * @generated
@@ -176,6 +183,44 @@ public class ProfissionaisREST {
   }
 
   /**
+   * OneToMany Relationship GET
+   * @generated
+   */
+  @RequestMapping(method = RequestMethod.GET, value="/{profissionaisId}/Respostas")    
+  public HttpEntity<PagedResources<Respostas>> findRespostas(@PathVariable("profissionaisId") java.lang.String profissionaisId, Pageable pageable, PagedResourcesAssembler assembler) {
+    return new ResponseEntity<>(assembler.toResource(profissionaisBusiness.findRespostas(profissionaisId, pageable)), HttpStatus.OK);
+  }
+
+  /**
+   * OneToMany Relationship DELETE 
+   * @generated
+   */  
+  @RequestMapping(method = RequestMethod.DELETE, value="/{profissionaisId}/Respostas/{respostasId}")    
+  public void deleteRespostas(@PathVariable("respostasId") java.lang.String respostasId) throws Exception {
+    this.respostasBusiness.delete(respostasId);
+  }
+  
+  /**
+   * OneToMany Relationship PUT
+   * @generated
+   */  
+  @RequestMapping(method = RequestMethod.PUT, value="/{profissionaisId}/Respostas")
+  public Respostas putRespostas(@Validated @RequestBody final Respostas entity, @PathVariable("profissionaisId") java.lang.String profissionaisId) throws Exception {
+    return this.respostasBusiness.put(entity);
+  }  
+  
+  /**
+   * OneToMany Relationship POST
+   * @generated
+   */  
+  @RequestMapping(method = RequestMethod.POST, value="/{profissionaisId}/Respostas")
+  public Respostas postRespostas(@Validated @RequestBody final Respostas entity, @PathVariable("profissionaisId") java.lang.String profissionaisId) throws Exception {
+    Profissionais profissionais = this.profissionaisBusiness.get(profissionaisId);
+    entity.setProfissionais(profissionais);
+    return this.respostasBusiness.post(entity);
+  }
+
+  /**
    * ManyToMany Relationship GET
    * @generated
    */
@@ -237,14 +282,5 @@ public class ProfissionaisREST {
   @RequestMapping(method = RequestMethod.GET, value="/Empresa/{empresaId}")    
   public HttpEntity<PagedResources<Profissionais>> findProfissionaissByEmpresa(@PathVariable("empresaId") java.lang.String empresaId, Pageable pageable, PagedResourcesAssembler assembler) {
     return new ResponseEntity<>(assembler.toResource(profissionaisBusiness.findProfissionaissByEmpresa(empresaId, pageable)), HttpStatus.OK);
-  }
-
-  /**
-   * Foreign Key respostas
-   * @generated
-   */
-  @RequestMapping(method = RequestMethod.GET, value="/Respostas/{respostasId}")    
-  public HttpEntity<PagedResources<Profissionais>> findProfissionaissByRespostas(@PathVariable("respostasId") java.lang.String respostasId, Pageable pageable, PagedResourcesAssembler assembler) {
-    return new ResponseEntity<>(assembler.toResource(profissionaisBusiness.findProfissionaissByRespostas(respostasId, pageable)), HttpStatus.OK);
   }
 }

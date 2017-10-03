@@ -36,8 +36,22 @@ public class Pergunta implements Serializable {
   /**
   * @generated
   */
-  @Column(name = "tipo_questao", nullable = true, unique = false, insertable=true, updatable=true)
-  private java.lang.String tipo_questao;
+  @ManyToOne
+  @JoinColumn(name="fk_pesquisa", nullable = true, referencedColumnName = "id", insertable=true, updatable=true)
+  private Pesquisa pesquisa;
+  
+  /**
+  * @generated
+  */
+  @ManyToOne
+  @JoinColumn(name="fk_componente", nullable = true, referencedColumnName = "id", insertable=true, updatable=true)
+  private Componente componente;
+  
+  /**
+  * @generated
+  */
+  @Column(name = "resposta", nullable = true, unique = false, insertable=true, updatable=true)
+  private java.lang.String resposta;
   
   /**
    * Construtor
@@ -86,21 +100,59 @@ public class Pergunta implements Serializable {
   }
   
   /**
-   * Obtém tipo_questao
-   * return tipo_questao
+   * Obtém pesquisa
+   * return pesquisa
    * @generated
    */
-  public java.lang.String getTipo_questao(){
-    return this.tipo_questao;
+  public Pesquisa getPesquisa(){
+    return this.pesquisa;
   }
   
   /**
-   * Define tipo_questao
-   * @param tipo_questao tipo_questao
+   * Define pesquisa
+   * @param pesquisa pesquisa
    * @generated
    */
-  public Pergunta setTipo_questao(java.lang.String tipo_questao){
-    this.tipo_questao = tipo_questao;
+  public Pergunta setPesquisa(Pesquisa pesquisa){
+    this.pesquisa = pesquisa;
+    return this;
+  }
+  
+  /**
+   * Obtém componente
+   * return componente
+   * @generated
+   */
+  public Componente getComponente(){
+    return this.componente;
+  }
+  
+  /**
+   * Define componente
+   * @param componente componente
+   * @generated
+   */
+  public Pergunta setComponente(Componente componente){
+    this.componente = componente;
+    return this;
+  }
+  
+  /**
+   * Obtém resposta
+   * return resposta
+   * @generated
+   */
+  public java.lang.String getResposta(){
+    return this.resposta;
+  }
+  
+  /**
+   * Define resposta
+   * @param resposta resposta
+   * @generated
+   */
+  public Pergunta setResposta(java.lang.String resposta){
+    this.resposta = resposta;
     return this;
   }
   

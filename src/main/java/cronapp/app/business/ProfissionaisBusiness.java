@@ -127,6 +127,19 @@ public class ProfissionaisBusiness {
     // end-user-code        
     return result;    
   }
+  
+  /**
+   * @generated modifiable
+   * OneToMany Relation
+   */  
+  public Page<Respostas> findRespostas(java.lang.String id, Pageable pageable) {
+    // begin-user-code
+    // end-user-code  
+    Page<Respostas> result = repository.findRespostas(id, pageable);
+    // begin-user-code  
+    // end-user-code        
+    return result;    
+  }
   /**
    * @generated modifiable
    * ManyToMany Relation
@@ -173,19 +186,6 @@ public class ProfissionaisBusiness {
     // begin-user-code
     // end-user-code  
     Page<Profissionais> result = repository.findProfissionaissByEmpresa(instanceId, pageable);
-    // begin-user-code  
-    // end-user-code        
-    return result;
-  }
-  
-  /**
-   * Foreign Key respostas
-   * @generated
-   */
-  public Page<Profissionais> findProfissionaissByRespostas(java.lang.String instanceId, Pageable pageable) {
-    // begin-user-code
-    // end-user-code  
-    Page<Profissionais> result = repository.findProfissionaissByRespostas(instanceId, pageable);
     // begin-user-code  
     // end-user-code        
     return result;

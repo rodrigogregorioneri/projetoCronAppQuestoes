@@ -106,10 +106,23 @@ public class PesquisaBusiness {
    * @generated modifiable
    * OneToMany Relation
    */  
-  public Page<OpcaoPerguntas> findOpcaoPerguntas(java.lang.String id, Pageable pageable) {
+  public Page<Empresa> findEmpresa(java.lang.String id, Pageable pageable) {
     // begin-user-code
     // end-user-code  
-    Page<OpcaoPerguntas> result = repository.findOpcaoPerguntas(id, pageable);
+    Page<Empresa> result = repository.findEmpresa(id, pageable);
+    // begin-user-code  
+    // end-user-code        
+    return result;    
+  }
+  
+  /**
+   * @generated modifiable
+   * OneToMany Relation
+   */  
+  public Page<Pergunta> findPergunta(java.lang.String id, Pageable pageable) {
+    // begin-user-code
+    // end-user-code  
+    Page<Pergunta> result = repository.findPergunta(id, pageable);
     // begin-user-code  
     // end-user-code        
     return result;    
@@ -118,10 +131,10 @@ public class PesquisaBusiness {
    * @generated modifiable
    * ManyToMany Relation
    */  
-  public Page<Pergunta> listPergunta(java.lang.String id, Pageable pageable) {
+  public Page<Componente> listComponente(java.lang.String id, Pageable pageable) {
     // begin-user-code
     // end-user-code  
-    Page<Pergunta> result = repository.listPergunta(id, pageable);
+    Page<Componente> result = repository.listComponente(id, pageable);
     // begin-user-code
     // end-user-code
     return result;            
@@ -131,10 +144,10 @@ public class PesquisaBusiness {
    * @generated modifiable
    * ManyToMany Relation
    */    
-  public int deletePergunta(java.lang.String instanceId, java.lang.String relationId) {
+  public int deleteComponente(java.lang.String instanceId, java.lang.String relationId) {
     // begin-user-code
     // end-user-code  
-    int result = repository.deletePergunta(instanceId, relationId);
+    int result = repository.deleteComponente(instanceId, relationId);
     // begin-user-code
     // end-user-code  
     return result;  
