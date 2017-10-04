@@ -47,6 +47,12 @@ public class Respostas implements Serializable {
   private java.lang.String idUserLogado;
   
   /**
+  * @generated
+  */
+  @Column(name = "pergunta", nullable = true, unique = false, insertable=true, updatable=true)
+  private java.lang.String pergunta;
+  
+  /**
    * Construtor
    * @generated
    */
@@ -127,6 +133,25 @@ public class Respostas implements Serializable {
    */
   public Respostas setIdUserLogado(java.lang.String idUserLogado){
     this.idUserLogado = idUserLogado;
+    return this;
+  }
+  
+  /**
+   * Obtém pergunta
+   * return pergunta
+   * @generated
+   */
+  public java.lang.String getPergunta(){
+    return this.pergunta;
+  }
+  
+  /**
+   * Define pergunta
+   * @param pergunta pergunta
+   * @generated
+   */
+  public Respostas setPergunta(java.lang.String pergunta){
+    this.pergunta = pergunta;
     return this;
   }
   

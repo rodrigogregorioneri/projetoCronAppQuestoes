@@ -11,13 +11,13 @@
       <thead>
         <tr class="table-header">
           <th class="">
-            <div class="">Id</div>
-          </th>
-          <th class="">
             <div class="">Resposta Correta</div>
           </th>
           <th class="">
-            <div class="">Profissionais</div>
+            <div class="">Id User Logado</div>
+          </th>
+          <th class="">
+            <div class="">Pergunta</div>
           </th>
           <th class="">
             <div class="">{{"template.crud.actions" | translate}}</div>
@@ -28,17 +28,17 @@
         <tr class="table-content" ng-repeat="rowData in datasource.data">
           <td class="">
             <div class="">
-              {{rowData.id}}
-            </div>
-          </td>
-          <td class="">
-            <div class="">
               {{rowData.respostaCorreta}}
             </div>
           </td>
           <td class="">
             <div class="">
-              {{rowData.profissionais.sobrenome}}
+              {{rowData.idUserLogado}}
+            </div>
+          </td>
+          <td class="">
+            <div class="">
+              {{rowData.pergunta}}
             </div>
           </td>
           <td class="">
@@ -99,6 +99,30 @@
                 </div>
               </ui-select-choices>
             </ui-select>
+          </div>
+        </div>
+        <div data-component="crn-textinput" id="crn-textinput-idUserLogado">
+          <div class="form-group">
+            <label for="textinput-idUserLogado" class="">Id User Logado</label>
+            <input
+              type="text"
+              ng-model="Respostas.active.idUserLogado"
+              class="form-control"
+              id="textinput-idUserLogado"
+              placeholder="Id User Logado"
+              >
+          </div>
+        </div>
+        <div data-component="crn-textinput" id="crn-textinput-pergunta">
+          <div class="form-group">
+            <label for="textinput-pergunta" class="">Pergunta</label>
+            <input
+              type="text"
+              ng-model="Respostas.active.pergunta"
+              class="form-control"
+              id="textinput-pergunta"
+              placeholder="Pergunta"
+              >
           </div>
         </div>
         <!-- NtoN  -->

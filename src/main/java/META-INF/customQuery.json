@@ -42,5 +42,83 @@
 			"foreignKey": null
 		},
 		"serviceUrl": "api/cronapi/query/skkj2amu2ywo/"
+	},
+	"qxtv5r6ror3k": {
+		"customId": "cadastroprofissional",
+		"queryName": "CadastroProfissional",
+		"screen": "src/main/webapp/views/logged/cadastroProfissional.view.html",
+		"sourceType": "entityFullName",
+		"blockly": null,
+		"entitySimpleName": "Profissionais",
+		"entityFullName": "cronapp.app.entity.Profissionais",
+		"query": "select o from Profissionais o",
+		"queryParamsValues": [],
+		"verbs": {
+			"GET": true,
+			"GETAuthorities": null,
+			"POST": true,
+			"POSTAuthorities": null,
+			"PUT": true,
+			"PUTAuthorities": null,
+			"DELETE": true,
+			"DELETEAuthorities": null,
+			"FILTER": true,
+			"FILTERAuthorities": null
+		},
+		"events": {
+			"beforeInsert": null,
+			"beforeUpdate": null,
+			"beforeDelete": null,
+			"afterInsert": null,
+			"afterUpdate": null,
+			"afterDelete": null,
+			"onNavigate": null,
+			"onGetData": null
+		},
+		"defaultValues": {
+			"id": null,
+			"sobrenome": null,
+			"idade": null,
+			"escolaridade": null,
+			"classificacao": null,
+			"curso": null,
+			"skype": null,
+			"whatsapp": null,
+			"facebook": null,
+			"instagram": null,
+			"linkedin": null,
+			"telefone": null,
+			"celular": null,
+			"cargo": null,
+			"empresa": null,
+			"nome": null,
+			"iduser": null
+		},
+		"security": {
+			"id": null,
+			"sobrenome": null,
+			"idade": null,
+			"escolaridade": null,
+			"classificacao": null,
+			"curso": null,
+			"skype": null,
+			"whatsapp": null,
+			"facebook": null,
+			"instagram": null,
+			"linkedin": null,
+			"telefone": null,
+			"celular": null,
+			"cargo": null,
+			"empresa": null,
+			"nome": null,
+			"iduser": null
+		},
+		"calcFields": {},
+		"calcFieldsSecurity": {},
+		"errorHandles": {
+			"primaryKey": null,
+			"foreignKey": null
+		},
+		"serviceUrl": "api/cronapi/query/qxtv5r6ror3k/"
 	}
 }
