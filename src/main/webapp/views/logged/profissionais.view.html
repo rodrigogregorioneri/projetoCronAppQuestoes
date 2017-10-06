@@ -1,6 +1,6 @@
 <h3>Profissionais</h3>
 <div data-component="crn-datasource" id="crn-datasource-763276" class="component-holder">
-  <datasource filter="" name="Profissionais" entity="api/rest/cronapp/app/Profissionais" keys="id" rows-per-page="100" delete-message="Deseja remover?" class=""></datasource>
+  <datasource filter="" name="Profissionais" entity="api/rest/app/Profissionais" keys="id" rows-per-page="100" delete-message="Deseja remover?" class=""></datasource>
 </div>
 <div data-component="crn-button" id="crn-button-564202">
   <button class="btn btn-primary" type="submit" onclick="" ng-click="Profissionais.startInserting()" ng-hide="Profissionais.inserting || Profissionais.editing"><i class="fa fa-user"></i> <span class="">{{"template.crud.new" | translate}}</span></button>
@@ -57,6 +57,9 @@
           </th>
           <th class="">
             <div class="">Nome</div>
+          </th>
+          <th class="">
+            <div class="">Iduser</div>
           </th>
           <th class="">
             <div class="">{{"template.crud.actions" | translate}}</div>
@@ -143,6 +146,11 @@
           <td class="">
             <div class="">
               {{rowData.nome}}
+            </div>
+          </td>
+          <td class="">
+            <div class="">
+              {{rowData.iduser}}
             </div>
           </td>
           <td class="">
@@ -314,7 +322,7 @@
           </div>
         </div>
         <div data-component="crn-datasource" class="component-holder">
-          <datasource name="cargo" entity="api/rest/cronapp/app/Cargo" keys="id" class="" dependent-by="{{Profissionais}}"></datasource>
+          <datasource name="cargo" entity="api/rest/app/Cargo" keys="id" class="" dependent-by="{{Profissionais}}"></datasource>
         </div>
         <div data-component="crn-combobox" id="crn-combobox-cargo">
           <div class="form-group">
@@ -332,7 +340,7 @@
           </div>
         </div>
         <div data-component="crn-datasource" class="component-holder">
-          <datasource name="empresa" entity="api/rest/cronapp/app/Empresa" keys="id" class="" dependent-by="{{Profissionais}}"></datasource>
+          <datasource name="empresa" entity="api/rest/app/Empresa" keys="id" class="" dependent-by="{{Profissionais}}"></datasource>
         </div>
         <div data-component="crn-combobox" id="crn-combobox-empresa">
           <div class="form-group">
@@ -358,6 +366,18 @@
               class="form-control"
               id="textinput-nome"
               placeholder="Nome"
+              >
+          </div>
+        </div>
+        <div data-component="crn-textinput" id="crn-textinput-iduser">
+          <div class="form-group">
+            <label for="textinput-iduser" class="">Iduser</label>
+            <input
+              type="text"
+              ng-model="Profissionais.active.iduser"
+              class="form-control"
+              id="textinput-iduser"
+              placeholder="Iduser"
               >
           </div>
         </div>

@@ -1,6 +1,6 @@
 <h3>PerguntaRespostas</h3>
 <div data-component="crn-datasource" id="crn-datasource-763276" class="component-holder">
-  <datasource filter="" name="PerguntaRespostas" entity="api/rest/cronapp/app/PerguntaRespostas" keys="id" rows-per-page="100" delete-message="Deseja remover?" class=""></datasource>
+  <datasource filter="" name="PerguntaRespostas" entity="api/rest/app/PerguntaRespostas" keys="id" rows-per-page="100" delete-message="Deseja remover?" class=""></datasource>
 </div>
 <div data-component="crn-button" id="crn-button-564202">
   <button class="btn btn-primary" type="submit" onclick="" ng-click="PerguntaRespostas.startInserting()" ng-hide="PerguntaRespostas.inserting || PerguntaRespostas.editing"><i class="fa fa-user"></i> <span class="">{{"template.crud.new" | translate}}</span></button>
@@ -72,7 +72,7 @@
       <br/>
       <fieldset ng-disabled="!datasource.editing &amp;&amp; !datasource.inserting">
         <div data-component="crn-datasource" class="component-holder">
-          <datasource name="pergunta" entity="api/rest/cronapp/app/Pergunta" keys="id" class="" dependent-by="{{PerguntaRespostas}}"></datasource>
+          <datasource name="pergunta" entity="api/rest/app/Pergunta" keys="id" class="" dependent-by="{{PerguntaRespostas}}"></datasource>
         </div>
         <div data-component="crn-combobox" id="crn-combobox-pergunta">
           <div class="form-group">
@@ -90,7 +90,7 @@
           </div>
         </div>
         <div data-component="crn-datasource" class="component-holder">
-          <datasource name="respostas" entity="api/rest/cronapp/app/Respostas" keys="id" class="" dependent-by="{{PerguntaRespostas}}"></datasource>
+          <datasource name="respostas" entity="api/rest/app/Respostas" keys="id" class="" dependent-by="{{PerguntaRespostas}}"></datasource>
         </div>
         <div data-component="crn-combobox" id="crn-combobox-respostas">
           <div class="form-group">

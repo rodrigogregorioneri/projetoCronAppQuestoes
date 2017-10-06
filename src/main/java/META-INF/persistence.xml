@@ -3,40 +3,29 @@
     <persistence-unit name="app" transaction-type="RESOURCE_LOCAL">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
         <jta-data-source>java:comp/env/jdbc/ProjetoMauricio2209</jta-data-source>
+        <class>app.entity.Ramo</class>
         <class>app.entity.UserRole</class>
+        <class>app.entity.Respostas</class>
+        <class>app.entity.PerguntaRespostas</class>
         <class>app.entity.User</class>
+        <class>app.entity.OpcaoPerguntas</class>
+        <class>app.entity.Componente</class>
+        <class>app.entity.Tecnologias</class>
+        <class>app.entity.Pergunta</class>
+        <class>app.entity.Estados</class>
+        <class>app.entity.Territorio</class>
+        <class>app.entity.Cidades</class>
+        <class>app.entity.Pesquisa</class>
+        <class>app.entity.Profissionais</class>
+        <class>app.entity.Empresa</class>
         <class>app.entity.Role</class>
+        <class>app.entity.Cargo</class>
+        <class>app.entity.RespostasOpcaoPerguntas</class>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://rds-oncronos-shared.cx8gelec2ybx.us-east-1.rds.amazonaws.com:3306/127df984-2e02-4e9c-b302-09d9633a0238"/>
-            <property name="javax.persistence.jdbc.user" value="127qs9842r024r9p"/>
-            <property name="javax.persistence.jdbc.password" value="po30209q9633n023"/>
-            <property name="eclipselink.ddl-generation" value="create-or-extend-tables"/>
-        </properties>
-    </persistence-unit>
-    <persistence-unit name="cronapp.app" transaction-type="RESOURCE_LOCAL">
-        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-        <jta-data-source>java:comp/env/jdbc/ProjetoMauricio2209</jta-data-source>
-        <class>cronapp.app.entity.Territorio</class>
-        <class>cronapp.app.entity.Profissionais</class>
-        <class>cronapp.app.entity.Cidades</class>
-        <class>cronapp.app.entity.Cargo</class>
-        <class>cronapp.app.entity.PerguntaRespostas</class>
-        <class>cronapp.app.entity.Estados</class>
-        <class>cronapp.app.entity.Respostas</class>
-        <class>cronapp.app.entity.Componente</class>
-        <class>cronapp.app.entity.Tecnologias</class>
-        <class>cronapp.app.entity.RespostasOpcaoPerguntas</class>
-        <class>cronapp.app.entity.OpcaoPerguntas</class>
-        <class>cronapp.app.entity.Pesquisa</class>
-        <class>cronapp.app.entity.Empresa</class>
-        <class>cronapp.app.entity.Ramo</class>
-        <class>cronapp.app.entity.Pergunta</class>
-        <properties>
-            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://rds-oncronos-shared.cx8gelec2ybx.us-east-1.rds.amazonaws.com:3306/127df984-2e02-4e9c-b302-09d9633a0238"/>
-            <property name="javax.persistence.jdbc.user" value="127qs9842r024r9p"/>
-            <property name="javax.persistence.jdbc.password" value="po30209q9633n023"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://rds-oncronos-shared.cx8gelec2ybx.us-east-1.rds.amazonaws.com:3306/8c79be33-932d-40ee-b128-f251a7d9e87b"/>
+            <property name="javax.persistence.jdbc.user" value="8p79or33932q40rr"/>
+            <property name="javax.persistence.jdbc.password" value="ro128s251n7q9r87"/>
             <property name="eclipselink.ddl-generation" value="create-or-extend-tables"/>
         </properties>
     </persistence-unit>

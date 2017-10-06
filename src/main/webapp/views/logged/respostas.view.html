@@ -1,6 +1,6 @@
 <h3>Respostas</h3>
 <div data-component="crn-datasource" id="crn-datasource-763276" class="component-holder">
-  <datasource filter="" name="Respostas" entity="api/rest/cronapp/app/Respostas" keys="id" rows-per-page="100" delete-message="Deseja remover?" class=""></datasource>
+  <datasource filter="" name="Respostas" entity="api/rest/app/Respostas" keys="id" rows-per-page="100" delete-message="Deseja remover?" class=""></datasource>
 </div>
 <div data-component="crn-button" id="crn-button-564202">
   <button class="btn btn-primary" type="submit" onclick="" ng-click="Respostas.startInserting()" ng-hide="Respostas.inserting || Respostas.editing"><i class="fa fa-user"></i> <span class="">{{"template.crud.new" | translate}}</span></button>
@@ -18,6 +18,12 @@
           </th>
           <th class="">
             <div class="">Profissionais</div>
+          </th>
+          <th class="">
+            <div class="">Id User Logado</div>
+          </th>
+          <th class="">
+            <div class="">Pergunta</div>
           </th>
           <th class="">
             <div class="">{{"template.crud.actions" | translate}}</div>
@@ -39,6 +45,16 @@
           <td class="">
             <div class="">
               {{rowData.profissionais.sobrenome}}
+            </div>
+          </td>
+          <td class="">
+            <div class="">
+              {{rowData.idUserLogado}}
+            </div>
+          </td>
+          <td class="">
+            <div class="">
+              {{rowData.pergunta}}
             </div>
           </td>
           <td class="">
@@ -84,7 +100,7 @@
           </div>
         </div>
         <div data-component="crn-datasource" class="component-holder">
-          <datasource name="profissionais" entity="api/rest/cronapp/app/Profissionais" keys="id" class="" dependent-by="{{Respostas}}"></datasource>
+          <datasource name="profissionais" entity="api/rest/app/Profissionais" keys="id" class="" dependent-by="{{Respostas}}"></datasource>
         </div>
         <div data-component="crn-combobox" id="crn-combobox-profissionais">
           <div class="form-group">
@@ -99,6 +115,30 @@
                 </div>
               </ui-select-choices>
             </ui-select>
+          </div>
+        </div>
+        <div data-component="crn-textinput" id="crn-textinput-idUserLogado">
+          <div class="form-group">
+            <label for="textinput-idUserLogado" class="">Id User Logado</label>
+            <input
+              type="text"
+              ng-model="Respostas.active.idUserLogado"
+              class="form-control"
+              id="textinput-idUserLogado"
+              placeholder="Id User Logado"
+              >
+          </div>
+        </div>
+        <div data-component="crn-textinput" id="crn-textinput-pergunta">
+          <div class="form-group">
+            <label for="textinput-pergunta" class="">Pergunta</label>
+            <input
+              type="text"
+              ng-model="Respostas.active.pergunta"
+              class="form-control"
+              id="textinput-pergunta"
+              placeholder="Pergunta"
+              >
           </div>
         </div>
         <!-- NtoN  -->

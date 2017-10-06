@@ -15,16 +15,16 @@
       <h3>{{rowData.perguntas}} </h3> 
       <div crn-datasource="OpcaoPerguntas" class=""> 
         <div class="component-holder ng-binding ng-scope btn-group" data-component="crn-radiogroup" id="crn-radiogroup-845069"> 
-          <div ng-repeat="(key,rowData) in datasource.data | filter: pergunta" class="form-group" ng-model=""> 
+          <div ng-repeat="rowData in datasource.data | filter: pergunta" class="form-group" ng-model=""> 
             <div ng-if="rowData.pergunta.componente.tipo_questao == 'alternativa'" class="checkbox"> 
               <div class="checkbox"> 
-                <label style="font-size: 1.5em"> <input type="checkbox" ng-true-value="'true'" ng-model="rowData.id" crn-value="{{rowData.opcao}}" value="{{rowData.opcao}}" name="optionsRadios" id="optionsRadios"> <span class="cr"><i class="cr-icon fa fa-check"></i></span> {{rowData.opcao}} </label> 
+                <label style="font-size: 1.5em"> <input type="checkbox" ng-true-value="true" ng-false-value="false" ng-model="rowData.id = false" crn-value="{{rowData.opcao}}" value="{{rowData.opcao}}" name="optionsRadios" id="optionsRadios"> <span class="cr"><i class="cr-icon fa fa-check"></i></span> {{rowData.opcao}} </label> 
+              
               </div> 
             </div> 
           </div> 
           <div ng-if="rowData.componente.tipo_questao == 'disertativa'" class="checkbox"> 
             <md-input-container class="md-block"> 
-            
               <textarea  ng-model="rowData.resposta" md-maxlength="150" rows="5" md-select-on-focus></textarea> 
             </md-input-container> 
           </div> 

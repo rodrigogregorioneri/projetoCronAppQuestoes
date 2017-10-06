@@ -40,10 +40,10 @@ public class SecurityPermission {
     http.authorizeRequests().antMatchers("/views/logged/**").hasAuthority(ROLE_ADMIN_NAME);
     
     
-    http.authorizeRequests().antMatchers("/api/security/**").hasAuthority(ROLE_PUBLIC_NAME);
-    http.authorizeRequests().antMatchers("/views/public/**").hasAuthority(ROLE_PUBLIC_NAME);
+
+    http.authorizeRequests().antMatchers("/views/public/**").authenticated();
     http.authorizeRequests().antMatchers("#/views/logged/home.view.html").authenticated();
-    http.authorizeRequests().antMatchers("/views/public/formularioPesquisa.view.html").hasAuthority(ROLE_PUBLIC_NAME);
+    http.authorizeRequests().antMatchers("/views/public/formularioPesquisa.view.html").authenticated();
 	
     // autenticated
     http.authorizeRequests().antMatchers("/api/rest/**").authenticated();

@@ -210,7 +210,7 @@ var app = (function() {
 											myobject = {
 												'respostaCorreta' : valores[i].resposta,
 												'profissionais' : profissional,
-												'idUserLogado'  : idUsuarioLogado
+												'idUserLogado' : idUsuarioLogado
 											}
 											$http(
 													{
@@ -227,33 +227,41 @@ var app = (function() {
 													}).error(function() {
 											});
 
-										} else {
+										} else if (valores[i].componente.tipo_questao === "alternativa") {
 											opcoes = $rootScope.OpcaoPerguntas.data;
+											console.log(opcoes);
 											for (j = 0; j < opcoes.length; j++) {
 
-												if (opcoes[j].id == "true"
+												if (opcoes[j].id === "true"
 														&& opcoes[j].pergunta.perguntas === valores[i].perguntas) {
 													myobject = {
 														'respostaCorreta' : opcoes[j].opcao,
 														'profissionais' : profissional,
-														 'idUserLogado'  : idUsuarioLogado
+														'idUserLogado' : idUsuarioLogado,
+														'pergunta' : opcoes[j].pergunta.perguntas
 													}
-												
+													$http(
+															{
+																method : 'POST',
+																url : 'api/rest/cronapp/app/Respostas',
+																data : myobject,
+																headers : {
+																	'Content-Type' : 'application/json'
+																}
+															}).success(
+															function(data,
+																	status,
+																	headers,
+																	config) {
+															}).error(
+															function() {
+															});
+												}else if(opcoes[j].id === "false"
+														&& opcoes[j].pergunta.perguntas === valores[i].perguntas){
+												  
 												}
 											}
-											$http(
-													{
-														method : 'POST',
-														url : 'api/rest/cronapp/app/Respostas',
-														data : myobject,
-														headers : {
-															'Content-Type' : 'application/json'
-														}
-													}).success(
-													function(data, status,
-															headers, config) {
-													}).error(function() {
-											});
+
 										}
 									}
 								}
@@ -269,10 +277,10 @@ var app = (function() {
 									}).success(
 											function(data, status, headers,
 													config) {
-													  console.log("foi");
+												console.log("foi");
 
 											}).error(function() {
-											  console.log("Não foi");
+										console.log("Não foi");
 									});
 								}
 
