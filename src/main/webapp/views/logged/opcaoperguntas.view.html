@@ -1,6 +1,6 @@
 <h3>OpcaoPerguntas</h3>
 <div data-component="crn-datasource" id="crn-datasource-763276" class="component-holder">
-  <datasource filter="" name="OpcaoPerguntas" entity="api/rest/cronapp/app/OpcaoPerguntas" keys="id" rows-per-page="100" delete-message="Deseja remover?" class=""></datasource>
+  <datasource filter="" name="OpcaoPerguntas" entity="api/rest/app/OpcaoPerguntas" keys="id" rows-per-page="100" delete-message="Deseja remover?" class=""></datasource>
 </div>
 <div data-component="crn-button" id="crn-button-564202">
   <button class="btn btn-primary" type="submit" onclick="" ng-click="OpcaoPerguntas.startInserting()" ng-hide="OpcaoPerguntas.inserting || OpcaoPerguntas.editing"><i class="fa fa-user"></i> <span class="">{{"template.crud.new" | translate}}</span></button>
@@ -84,7 +84,7 @@
           </div>
         </div>
         <div data-component="crn-datasource" class="component-holder">
-          <datasource name="pergunta" entity="api/rest/cronapp/app/Pergunta" keys="id" class="" dependent-by="{{OpcaoPerguntas}}"></datasource>
+          <datasource name="pergunta" entity="api/rest/app/Pergunta" keys="id" class="" dependent-by="{{OpcaoPerguntas}}"></datasource>
         </div>
         <div data-component="crn-combobox" id="crn-combobox-pergunta">
           <div class="form-group">

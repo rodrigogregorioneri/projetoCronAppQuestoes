@@ -1,6 +1,6 @@
 <h3>RespostasOpcaoPerguntas</h3>
 <div data-component="crn-datasource" id="crn-datasource-763276" class="component-holder">
-  <datasource filter="" name="RespostasOpcaoPerguntas" entity="api/rest/cronapp/app/RespostasOpcaoPerguntas" keys="id" rows-per-page="100" delete-message="Deseja remover?" class=""></datasource>
+  <datasource filter="" name="RespostasOpcaoPerguntas" entity="api/rest/app/RespostasOpcaoPerguntas" keys="id" rows-per-page="100" delete-message="Deseja remover?" class=""></datasource>
 </div>
 <div data-component="crn-button" id="crn-button-564202">
   <button class="btn btn-primary" type="submit" onclick="" ng-click="RespostasOpcaoPerguntas.startInserting()" ng-hide="RespostasOpcaoPerguntas.inserting || RespostasOpcaoPerguntas.editing"><i class="fa fa-user"></i> <span class="">{{"template.crud.new" | translate}}</span></button>
@@ -72,7 +72,7 @@
       <br/>
       <fieldset ng-disabled="!datasource.editing &amp;&amp; !datasource.inserting">
         <div data-component="crn-datasource" class="component-holder">
-          <datasource name="respostas" entity="api/rest/cronapp/app/Respostas" keys="id" class="" dependent-by="{{RespostasOpcaoPerguntas}}"></datasource>
+          <datasource name="respostas" entity="api/rest/app/Respostas" keys="id" class="" dependent-by="{{RespostasOpcaoPerguntas}}"></datasource>
         </div>
         <div data-component="crn-combobox" id="crn-combobox-respostas">
           <div class="form-group">
@@ -90,7 +90,7 @@
           </div>
         </div>
         <div data-component="crn-datasource" class="component-holder">
-          <datasource name="opcaoPerguntas" entity="api/rest/cronapp/app/OpcaoPerguntas" keys="id" class="" dependent-by="{{RespostasOpcaoPerguntas}}"></datasource>
+          <datasource name="opcaoPerguntas" entity="api/rest/app/OpcaoPerguntas" keys="id" class="" dependent-by="{{RespostasOpcaoPerguntas}}"></datasource>
         </div>
         <div data-component="crn-combobox" id="crn-combobox-opcaoPerguntas">
           <div class="form-group">

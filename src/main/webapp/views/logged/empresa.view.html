@@ -1,6 +1,6 @@
 <h3>Empresa</h3>
 <div data-component="crn-datasource" id="crn-datasource-763276" class="component-holder">
-  <datasource filter="" name="Empresa" entity="api/rest/cronapp/app/Empresa" keys="id" rows-per-page="100" delete-message="Deseja remover?" class=""></datasource>
+  <datasource filter="" name="Empresa" entity="api/rest/app/Empresa" keys="id" rows-per-page="100" delete-message="Deseja remover?" class=""></datasource>
 </div>
 <div data-component="crn-button" id="crn-button-564202">
   <button class="btn btn-primary" type="submit" onclick="" ng-click="Empresa.startInserting()" ng-hide="Empresa.inserting || Empresa.editing"><i class="fa fa-user"></i> <span class="">{{"template.crud.new" | translate}}</span></button>
@@ -140,7 +140,7 @@
           </div>
         </div>
         <div data-component="crn-datasource" class="component-holder">
-          <datasource name="ramo" entity="api/rest/cronapp/app/Ramo" keys="id" class="" dependent-by="{{Empresa}}"></datasource>
+          <datasource name="ramo" entity="api/rest/app/Ramo" keys="id" class="" dependent-by="{{Empresa}}"></datasource>
         </div>
         <div data-component="crn-combobox" id="crn-combobox-ramo">
           <div class="form-group">
@@ -158,7 +158,7 @@
           </div>
         </div>
         <div data-component="crn-datasource" class="component-holder">
-          <datasource name="pesquisa" entity="api/rest/cronapp/app/Pesquisa" keys="id" class="" dependent-by="{{Empresa}}"></datasource>
+          <datasource name="pesquisa" entity="api/rest/app/Pesquisa" keys="id" class="" dependent-by="{{Empresa}}"></datasource>
         </div>
         <div data-component="crn-combobox" id="crn-combobox-pesquisa">
           <div class="form-group">

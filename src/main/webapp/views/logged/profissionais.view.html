@@ -1,6 +1,6 @@
 <h3>Profissionais</h3>
 <div data-component="crn-datasource" id="crn-datasource-763276" class="component-holder">
-  <datasource filter="" name="Profissionais" entity="api/rest/cronapp/app/Profissionais" keys="id" rows-per-page="100" delete-message="Deseja remover?" class=""></datasource>
+  <datasource filter="" name="Profissionais" entity="api/rest/app/Profissionais" keys="id" rows-per-page="100" delete-message="Deseja remover?" class=""></datasource>
 </div>
 <div data-component="crn-button" id="crn-button-564202">
   <button class="btn btn-primary" type="submit" onclick="" ng-click="Profissionais.startInserting()" ng-hide="Profissionais.inserting || Profissionais.editing"><i class="fa fa-user"></i> <span class="">{{"template.crud.new" | translate}}</span></button>
@@ -57,6 +57,9 @@
           </th>
           <th class="">
             <div class="">Nome</div>
+          </th>
+          <th class="">
+            <div class="">Iduser</div>
           </th>
           <th class="">
             <div class="">{{"template.crud.actions" | translate}}</div>
@@ -147,6 +150,11 @@
           </td>
           <td class="">
             <div class="">
+              {{rowData.iduser}}
+            </div>
+          </td>
+          <td class="">
+            <div class="">
               <button class="btn btn-default btn-sm" type="submit" ng-click="datasource.startEditing(rowData)"><i class="fa fa-edit"></i></button>
               <button class="btn btn-default btn-sm" type="submit" ng-click="datasource.remove(rowData)"><i class="fa fa-times"></i></button>
             </div>
@@ -174,96 +182,156 @@
         <button class="btn btn-danger" ng-click="datasource.cancel()"><i class="glyphicon glyphicon-remove"></i></button>
       </div>
       <br/>
-           <fieldset>
-        <div data-component="crn-textinput" id="crn-textinput-nome" class="col-sm-6">
-          <div class="form-group">
-            <label for="textinput-nome" class="">Nome</label>
-            <input type="text" ng-model="Profissionais.active.nome" class="form-control" id="textinput-nome" placeholder="Nome">
-          </div>
-        </div>          
-        <div data-component="crn-textinput" id="crn-textinput-sobrenome"  class="col-sm-6">
+      <fieldset ng-disabled="!datasource.editing &amp;&amp; !datasource.inserting">
+        <div data-component="crn-textinput" id="crn-textinput-sobrenome">
           <div class="form-group">
             <label for="textinput-sobrenome" class="">Sobrenome</label>
-            <input type="text" ng-model="Profissionais.active.sobrenome" class="form-control" id="textinput-sobrenome" placeholder="Sobrenome">
+            <input
+              type="text"
+              ng-model="Profissionais.active.sobrenome"
+              class="form-control"
+              id="textinput-sobrenome"
+              placeholder="Sobrenome"
+              >
           </div>
         </div>
-        <div data-component="crn-textinput" id="crn-textinput-idade"  class="col-sm-3">
+        <div data-component="crn-textinput" id="crn-textinput-idade">
           <div class="form-group">
             <label for="textinput-idade" class="">Idade</label>
-            <input type="number" ng-model="Profissionais.active.idade" class="form-control" id="textinput-idade" placeholder="Idade">
+            <input type="number"  ng-model="Profissionais.active.idade" class="form-control" id="textinput-idade" placeholder="Idade" >
           </div>
         </div>
-        <div data-component="crn-textinput" id="crn-textinput-escolaridade"  class="col-sm-3">
+        <div data-component="crn-textinput" id="crn-textinput-escolaridade">
           <div class="form-group">
             <label for="textinput-escolaridade" class="">Escolaridade</label>
-            <input type="text" ng-model="Profissionais.active.escolaridade" class="form-control" id="textinput-escolaridade" placeholder="Escolaridade">
+            <input
+              type="text"
+              ng-model="Profissionais.active.escolaridade"
+              class="form-control"
+              id="textinput-escolaridade"
+              placeholder="Escolaridade"
+              >
           </div>
         </div>
-        <div data-component="crn-textinput" id="crn-textinput-classificacao"  class="col-sm-3">
+        <div data-component="crn-textinput" id="crn-textinput-classificacao">
           <div class="form-group">
             <label for="textinput-classificacao" class="">Classificacao</label>
-            <input type="text" ng-model="Profissionais.active.classificacao" class="form-control" id="textinput-classificacao" placeholder="Classificacao">
+            <input
+              type="text"
+              ng-model="Profissionais.active.classificacao"
+              class="form-control"
+              id="textinput-classificacao"
+              placeholder="Classificacao"
+              >
           </div>
         </div>
-        <div data-component="crn-textinput" id="crn-textinput-curso"  class="col-sm-3">
+        <div data-component="crn-textinput" id="crn-textinput-curso">
           <div class="form-group">
             <label for="textinput-curso" class="">Curso</label>
-            <input type="text" ng-model="Profissionais.active.curso" class="form-control" id="textinput-curso" placeholder="Curso">
+            <input
+              type="text"
+              ng-model="Profissionais.active.curso"
+              class="form-control"
+              id="textinput-curso"
+              placeholder="Curso"
+              >
           </div>
         </div>
-        <div data-component="crn-textinput" id="crn-textinput-skype"  class="col-sm-4">
+        <div data-component="crn-textinput" id="crn-textinput-skype">
           <div class="form-group">
             <label for="textinput-skype" class="">Skype</label>
-            <input type="text" ng-model="Profissionais.active.skype" class="form-control" id="textinput-skype" placeholder="Skype">
+            <input
+              type="text"
+              ng-model="Profissionais.active.skype"
+              class="form-control"
+              id="textinput-skype"
+              placeholder="Skype"
+              >
           </div>
         </div>
-        <div data-component="crn-textinput" id="crn-textinput-whatsapp"  class="col-sm-4">
+        <div data-component="crn-textinput" id="crn-textinput-whatsapp">
           <div class="form-group">
             <label for="textinput-whatsapp" class="">Whatsapp</label>
-            <input type="text" ng-model="Profissionais.active.whatsapp" class="form-control" id="textinput-whatsapp" placeholder="Whatsapp">
+            <input
+              type="text"
+              ng-model="Profissionais.active.whatsapp"
+              class="form-control"
+              id="textinput-whatsapp"
+              placeholder="Whatsapp"
+              >
           </div>
         </div>
-        <div data-component="crn-textinput" id="crn-textinput-facebook"  class="col-sm-4">
+        <div data-component="crn-textinput" id="crn-textinput-facebook">
           <div class="form-group">
             <label for="textinput-facebook" class="">Facebook</label>
-            <input type="text" ng-model="Profissionais.active.facebook" class="form-control" id="textinput-facebook" placeholder="Facebook">
+            <input
+              type="text"
+              ng-model="Profissionais.active.facebook"
+              class="form-control"
+              id="textinput-facebook"
+              placeholder="Facebook"
+              >
           </div>
         </div>
-        <div data-component="crn-textinput" id="crn-textinput-instagram"  class="col-sm-4">
+        <div data-component="crn-textinput" id="crn-textinput-instagram">
           <div class="form-group">
             <label for="textinput-instagram" class="">Instagram</label>
-            <input type="text" ng-model="Profissionais.active.instagram" class="form-control" id="textinput-instagram" placeholder="Instagram">
+            <input
+              type="text"
+              ng-model="Profissionais.active.instagram"
+              class="form-control"
+              id="textinput-instagram"
+              placeholder="Instagram"
+              >
           </div>
         </div>
-        <div data-component="crn-textinput" id="crn-textinput-linkedin"  class="col-sm-4">
+        <div data-component="crn-textinput" id="crn-textinput-linkedin">
           <div class="form-group">
             <label for="textinput-linkedin" class="">Linkedin</label>
-            <input type="text" ng-model="Profissionais.active.linkedin" class="form-control" id="textinput-linkedin" placeholder="Linkedin">
+            <input
+              type="text"
+              ng-model="Profissionais.active.linkedin"
+              class="form-control"
+              id="textinput-linkedin"
+              placeholder="Linkedin"
+              >
           </div>
         </div>
-        <div data-component="crn-textinput" id="crn-textinput-telefone"  class="col-sm-4">
+        <div data-component="crn-textinput" id="crn-textinput-telefone">
           <div class="form-group">
             <label for="textinput-telefone" class="">Telefone</label>
-            <input type="text" ng-model="Profissionais.active.telefone" class="form-control" id="textinput-telefone" placeholder="Telefone">
+            <input
+              type="text"
+              ng-model="Profissionais.active.telefone"
+              class="form-control"
+              id="textinput-telefone"
+              placeholder="Telefone"
+              >
           </div>
         </div>
-        <div data-component="crn-textinput" id="crn-textinput-celular"  class="col-sm-4">
+        <div data-component="crn-textinput" id="crn-textinput-celular">
           <div class="form-group">
             <label for="textinput-celular" class="">Celular</label>
-            <input type="text" ng-model="Profissionais.active.celular" class="form-control" id="textinput-celular" placeholder="Celular">
+            <input
+              type="text"
+              ng-model="Profissionais.active.celular"
+              class="form-control"
+              id="textinput-celular"
+              placeholder="Celular"
+              >
           </div>
         </div>
         <div data-component="crn-datasource" class="component-holder">
-          <datasource name="cargo" entity="api/rest/cronapp/app/Cargo" keys="id" class="" dependent-by="{{Profissionais}}"></datasource>
+          <datasource name="cargo" entity="api/rest/app/Cargo" keys="id" class="" dependent-by="{{Profissionais}}"></datasource>
         </div>
-        <div data-component="crn-combobox" id="crn-combobox-cargo"  class="col-sm-4">
+        <div data-component="crn-combobox" id="crn-combobox-cargo">
           <div class="form-group">
             <label for="combobox-cargo" class="">Cargo</label>
-            <ui-select ng-model="Profissionais.active.cargo" crn-datasource="cargo" class="crn-select" id="combobox-cargo">
+            <ui-select ng-model="Profissionais.active.cargo" crn-datasource="cargo" class="crn-select" id="combobox-cargo" >
               <ui-select-match class="">
                 {{$select.selected.ocupacao}}
               </ui-select-match>
-              <ui-select-choices repeat="rowData in datasource.data | filter : $select.search" class="">
+              <ui-select-choices  repeat="rowData in datasource.data | filter : $select.search" class="">
                 <div class="" data-container="true">
                   {{rowData.ocupacao}}
                 </div>
@@ -272,16 +340,16 @@
           </div>
         </div>
         <div data-component="crn-datasource" class="component-holder">
-          <datasource name="empresa" entity="api/rest/cronapp/app/Empresa" keys="id" class="" dependent-by="{{Profissionais}}"></datasource>
+          <datasource name="empresa" entity="api/rest/app/Empresa" keys="id" class="" dependent-by="{{Profissionais}}"></datasource>
         </div>
-        <div data-component="crn-combobox" id="crn-combobox-empresa"  class="col-sm-4">
+        <div data-component="crn-combobox" id="crn-combobox-empresa">
           <div class="form-group">
             <label for="combobox-empresa" class="">Empresa</label>
-            <ui-select ng-model="Profissionais.active.empresa" crn-datasource="empresa" class="crn-select" id="combobox-empresa">
+            <ui-select ng-model="Profissionais.active.empresa" crn-datasource="empresa" class="crn-select" id="combobox-empresa" >
               <ui-select-match class="">
                 {{$select.selected.razao}}
               </ui-select-match>
-              <ui-select-choices repeat="rowData in datasource.data | filter : $select.search" class="">
+              <ui-select-choices  repeat="rowData in datasource.data | filter : $select.search" class="">
                 <div class="" data-container="true">
                   {{rowData.razao}}
                 </div>
@@ -289,7 +357,30 @@
             </ui-select>
           </div>
         </div>
-
+        <div data-component="crn-textinput" id="crn-textinput-nome">
+          <div class="form-group">
+            <label for="textinput-nome" class="">Nome</label>
+            <input
+              type="text"
+              ng-model="Profissionais.active.nome"
+              class="form-control"
+              id="textinput-nome"
+              placeholder="Nome"
+              >
+          </div>
+        </div>
+        <div data-component="crn-textinput" id="crn-textinput-iduser">
+          <div class="form-group">
+            <label for="textinput-iduser" class="">Iduser</label>
+            <input
+              type="text"
+              ng-model="Profissionais.active.iduser"
+              class="form-control"
+              id="textinput-iduser"
+              placeholder="Iduser"
+              >
+          </div>
+        </div>
         <!-- NtoN  -->
         <!-- NtoN  end-->
       </fieldset>

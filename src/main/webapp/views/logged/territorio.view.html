@@ -1,6 +1,6 @@
 <h3>Territorio</h3>
 <div data-component="crn-datasource" id="crn-datasource-763276" class="component-holder">
-  <datasource filter="" name="Territorio" entity="api/rest/cronapp/app/Territorio" keys="id" rows-per-page="100" delete-message="Deseja remover?" class=""></datasource>
+  <datasource filter="" name="Territorio" entity="api/rest/app/Territorio" keys="id" rows-per-page="100" delete-message="Deseja remover?" class=""></datasource>
 </div>
 <div data-component="crn-button" id="crn-button-564202">
   <button class="btn btn-primary" type="submit" onclick="" ng-click="Territorio.startInserting()" ng-hide="Territorio.inserting || Territorio.editing"><i class="fa fa-user"></i> <span class="">{{"template.crud.new" | translate}}</span></button>
@@ -92,7 +92,7 @@
           </div>
         </div>
         <div data-component="crn-datasource" class="component-holder">
-          <datasource name="estados" entity="api/rest/cronapp/app/Estados" keys="id" class="" dependent-by="{{Territorio}}"></datasource>
+          <datasource name="estados" entity="api/rest/app/Estados" keys="id" class="" dependent-by="{{Territorio}}"></datasource>
         </div>
         <div data-component="crn-combobox" id="crn-combobox-estados">
           <div class="form-group">
