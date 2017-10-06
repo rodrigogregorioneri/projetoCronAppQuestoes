@@ -215,7 +215,7 @@ var app = (function() {
 											$http(
 													{
 														method : 'POST',
-														url : 'api/rest/cronapp/app/Respostas',
+														url : 'api/rest/app/Respostas',
 														data : myobject,
 														headers : {
 															'Content-Type' : 'application/json'
@@ -243,7 +243,7 @@ var app = (function() {
 													$http(
 															{
 																method : 'POST',
-																url : 'api/rest/cronapp/app/Respostas',
+																url : 'api/rest/app/Respostas',
 																data : myobject,
 																headers : {
 																	'Content-Type' : 'application/json'
